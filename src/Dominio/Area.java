@@ -1,6 +1,6 @@
 package Dominio;
 
-public class Area {
+public class Area implements Comparable<Area>{
     private String nombre;
     private String descripcion;
     private int presupuesto;
@@ -40,5 +40,9 @@ public class Area {
         return nombre;
     }
     
+    @Override
+    public int compareTo(Area unArea){
+        return this.getNombre().compareTo(unArea.getNombre());
+    }
     
 }

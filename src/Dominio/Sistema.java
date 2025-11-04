@@ -73,6 +73,11 @@ public class Sistema {
                 existe = true;
             }
         }
+        for(Manager m : listaManagers){
+            if(m.getCedula().equals(unCi)){
+                existe = true;
+            }
+        }
         return existe;
     }
 }

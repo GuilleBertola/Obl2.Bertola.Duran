@@ -47,7 +47,7 @@ public class AltaAreas extends javax.swing.JFrame {
 
         jLabel1.setText("Areas");
         getContentPane().add(jLabel1);
-        jLabel1.setBounds(60, 60, 37, 16);
+        jLabel1.setBounds(70, 60, 37, 16);
         getContentPane().add(txtNom);
         txtNom.setBounds(250, 100, 180, 22);
         getContentPane().add(txtDescripcion);
@@ -67,7 +67,7 @@ public class AltaAreas extends javax.swing.JFrame {
         getContentPane().add(jLabel4);
         jLabel4.setBounds(170, 180, 70, 16);
 
-        btnCrearArea.setText("Crear area");
+        btnCrearArea.setText("Ingresar area");
         btnCrearArea.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 btnCrearAreaActionPerformed(evt);
@@ -112,7 +112,6 @@ public class AltaAreas extends javax.swing.JFrame {
             JOptionPane.showMessageDialog(this, nom + " agregado con exito", "Confirmacion", 1);
             listaAreas.setListData(modelo.getListaAreas().toArray());
         }
-        
     }//GEN-LAST:event_btnCrearAreaActionPerformed
 
 
