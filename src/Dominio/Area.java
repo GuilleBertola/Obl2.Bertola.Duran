@@ -37,7 +37,7 @@ public class Area {
 
     @Override
     public String toString() {//ver que queremos que tenga el toString
-        return "Area{" + "nombre=" + nombre + ", descripcion=" + descripcion + ", presupuesto=" + presupuesto + '}';
+        return nombre;
     }
     
     

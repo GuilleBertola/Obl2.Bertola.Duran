@@ -65,4 +65,14 @@ public class Sistema {
         }
         return !existe;
     }
+    
+    public boolean existeCi(String unCi){
+        boolean existe = false;
+        for(Empleado e : listaEmpleados){
+            if(e.getCedula().equals(unCi)){
+                existe = true;
+            }
+        }
+        return existe;
+    }
 }

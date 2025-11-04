@@ -109,7 +109,7 @@ public class AltaAreas extends javax.swing.JFrame {
         }
         if(todoOk){
             modelo.agregarArea(new Area(nom, desc, presupuesto));
-            JOptionPane.showMessageDialog(this, nom + "agregado con exito", "Confirmacion", 1);
+            JOptionPane.showMessageDialog(this, nom + " agregado con exito", "Confirmacion", 1);
             listaAreas.setListData(modelo.getListaAreas().toArray());
         }
         
