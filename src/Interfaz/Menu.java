@@ -1,5 +1,9 @@
 package Interfaz;
 
+import Interfaz.*;
+import javax.swing.*;
+
+
 public class Menu extends javax.swing.JFrame {
     
     private static final java.util.logging.Logger logger = java.util.logging.Logger.getLogger(Menu.class.getName());
@@ -7,40 +11,149 @@ public class Menu extends javax.swing.JFrame {
     
     public Menu() {
         initComponents();
+        addKeyListener(new java.awt.event.KeyAdapter() {
+        @Override
+        public void keyPressed(java.awt.event.KeyEvent e) {
+            if (e.getKeyCode() == java.awt.event.KeyEvent.VK_F1) {
+                JOptionPane.showMessageDialog(null, "Guillermo Bértola: 303665 y Santiago Durán: 351471");
+            }
+        }
+    });
+  
+    this.setFocusable(true);
     }
-
+    
     @SuppressWarnings("unchecked")
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
-        jLabel1 = new javax.swing.JLabel();
+        jLabel2 = new javax.swing.JLabel();
+        jMenuBar1 = new javax.swing.JMenuBar();
+        areas = new javax.swing.JMenu();
+        AreaAlt = new javax.swing.JMenuItem();
+        AreaBaj = new javax.swing.JMenuItem();
+        AreaMod = new javax.swing.JMenuItem();
+        AreaMov = new javax.swing.JMenuItem();
+        ManAlt = new javax.swing.JMenu();
+        jMenuItem5 = new javax.swing.JMenuItem();
+        ManBaj = new javax.swing.JMenuItem();
+        ManMod = new javax.swing.JMenuItem();
+        EmpleAlt = new javax.swing.JMenu();
+        jMenuItem8 = new javax.swing.JMenuItem();
+        RepoInt = new javax.swing.JMenu();
+        jMenuItem9 = new javax.swing.JMenuItem();
+        RepoEst = new javax.swing.JMenuItem();
+        RepoMod = new javax.swing.JMenuItem();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+        getContentPane().setLayout(null);
 
-        jLabel1.setText("ni idea, cree esto para que la carpeta no estuviera vacia");
+        jLabel2.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Interfaz/guillefoto.jpg"))); // NOI18N
+        jLabel2.setText("jLabel2");
+        jLabel2.setMaximumSize(new java.awt.Dimension(381, 640));
+        jLabel2.setMinimumSize(new java.awt.Dimension(381, 640));
+        getContentPane().add(jLabel2);
+        jLabel2.setBounds(-150, 0, 650, 600);
 
-        javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
-        getContentPane().setLayout(layout);
-        layout.setHorizontalGroup(
-            layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                .addContainerGap(72, Short.MAX_VALUE)
-                .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 337, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(70, 70, 70))
-        );
-        layout.setVerticalGroup(
-            layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(layout.createSequentialGroup()
-                .addGap(109, 109, 109)
-                .addComponent(jLabel1)
-                .addContainerGap(175, Short.MAX_VALUE))
-        );
+        areas.setText("Áreas");
+        areas.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                areasActionPerformed(evt);
+            }
+        });
+
+        AreaAlt.setText("Alta");
+        areas.add(AreaAlt);
+
+        AreaBaj.setText("Baja");
+        areas.add(AreaBaj);
+
+        AreaMod.setText("Modificación");
+        AreaMod.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                AreaModActionPerformed(evt);
+            }
+        });
+        areas.add(AreaMod);
+
+        AreaMov.setText("Realizar Movimiento");
+        areas.add(AreaMov);
+
+        jMenuBar1.add(areas);
+
+        ManAlt.setText("Managers");
+
+        jMenuItem5.setText("Alta");
+        ManAlt.add(jMenuItem5);
+
+        ManBaj.setText("Baja");
+        ManAlt.add(ManBaj);
+
+        ManMod.setText("Modificación");
+        ManAlt.add(ManMod);
+
+        jMenuBar1.add(ManAlt);
+
+        EmpleAlt.setText("Empleados");
+
+        jMenuItem8.setText("Alta");
+        jMenuItem8.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jMenuItem8ActionPerformed(evt);
+            }
+        });
+        EmpleAlt.add(jMenuItem8);
+
+        jMenuBar1.add(EmpleAlt);
+
+        RepoInt.setText("Reportes");
+
+        jMenuItem9.setText("Reporte inteligente");
+        RepoInt.add(jMenuItem9);
+
+        RepoEst.setText("Reporte de estado de áreas");
+        RepoInt.add(RepoEst);
+
+        RepoMod.setText("Reporte de movimientos");
+        RepoInt.add(RepoMod);
+
+        jMenuBar1.add(RepoInt);
+
+        setJMenuBar(jMenuBar1);
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
+    private void areasActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_areasActionPerformed
+        
+    }//GEN-LAST:event_areasActionPerformed
+
+    private void AreaModActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_AreaModActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_AreaModActionPerformed
+
+    private void jMenuItem8ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItem8ActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_jMenuItem8ActionPerformed
+
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JLabel jLabel1;
+    private javax.swing.JMenuItem AreaAlt;
+    private javax.swing.JMenuItem AreaBaj;
+    private javax.swing.JMenuItem AreaMod;
+    private javax.swing.JMenuItem AreaMov;
+    private javax.swing.JMenu EmpleAlt;
+    private javax.swing.JMenu ManAlt;
+    private javax.swing.JMenuItem ManBaj;
+    private javax.swing.JMenuItem ManMod;
+    private javax.swing.JMenuItem RepoEst;
+    private javax.swing.JMenu RepoInt;
+    private javax.swing.JMenuItem RepoMod;
+    private javax.swing.JMenu areas;
+    private javax.swing.JLabel jLabel2;
+    private javax.swing.JMenuBar jMenuBar1;
+    private javax.swing.JMenuItem jMenuItem5;
+    private javax.swing.JMenuItem jMenuItem8;
+    private javax.swing.JMenuItem jMenuItem9;
     // End of variables declaration//GEN-END:variables
 }
