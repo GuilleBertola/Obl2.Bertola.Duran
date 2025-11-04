@@ -1,6 +1,6 @@
 package Dominio;
 
-public class Manager {
+public class Manager implements Comparable<Manager>{
     private String cedula;
     private String nombre;
     private int antiguedad; //leer letra sobre antiguedad
@@ -44,6 +44,11 @@ public class Manager {
     @Override
     public String toString() {
         return nombre;
+    }
+    
+    @Override
+    public int compareTo(Manager unManager){
+        return unManager.getAntiguedad()-this.getAntiguedad();
     }
       
 }

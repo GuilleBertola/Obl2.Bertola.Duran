@@ -8,9 +8,10 @@ public class AltaManagers extends javax.swing.JFrame {
     private static final java.util.logging.Logger logger = java.util.logging.Logger.getLogger(AltaManagers.class.getName());
 
     public AltaManagers(Sistema sis) {
-        initComponents();
         modelo = sis;
-        listaManagers.setListData(modelo.getListaManagers().toArray());
+        initComponents();
+        cargarLista();
+        
     }
 
     @SuppressWarnings("unchecked")
@@ -108,7 +109,7 @@ public class AltaManagers extends javax.swing.JFrame {
         if(todoOk){
             modelo.agregarManager(new Manager(ci, nom, antig, cel));
             JOptionPane.showMessageDialog(this, nom + " agregado con exito", "Confirmacion", 1);
-            listaManagers.setListData(modelo.getListaManagers().toArray());
+            cargarLista();
         }
     }//GEN-LAST:event_btnIngresarActionPerformed
 
@@ -116,6 +117,10 @@ public class AltaManagers extends javax.swing.JFrame {
         dispose();
     }//GEN-LAST:event_btnCerrarActionPerformed
 
+    public void cargarLista(){
+        modelo.ordenarListaManagers();
+        listaManagers.setListData(modelo.getListaManagers().toArray());
+    }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton btnCerrar;

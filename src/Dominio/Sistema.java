@@ -55,6 +55,12 @@ public class Sistema {
     public void ordenarListaMoviminetos(){
         Collections.sort(listaMovimientos);        
     }
+    public void ordenarListaAreas(){
+        Collections.sort(listaAreas);
+    }
+    public void ordenarListaManagers(){
+        Collections.sort(listaManagers);
+    }
     
     public boolean nombreAreaDisponible(String unNombre){
         boolean existe = false;

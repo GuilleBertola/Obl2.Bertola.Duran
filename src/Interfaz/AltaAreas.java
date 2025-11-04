@@ -8,9 +8,9 @@ public class AltaAreas extends javax.swing.JFrame {
     private static final java.util.logging.Logger logger = java.util.logging.Logger.getLogger(AltaAreas.class.getName());
 
     public AltaAreas(Sistema sis) {
-        initComponents();
         modelo = sis;
-        listaAreas.setListData(modelo.getListaAreas().toArray());
+        initComponents();
+        cargarLista();
     }
 
     @SuppressWarnings("unchecked")
@@ -110,10 +110,14 @@ public class AltaAreas extends javax.swing.JFrame {
         if(todoOk){
             modelo.agregarArea(new Area(nom, desc, presupuesto));
             JOptionPane.showMessageDialog(this, nom + " agregado con exito", "Confirmacion", 1);
-            listaAreas.setListData(modelo.getListaAreas().toArray());
+            cargarLista();
         }
     }//GEN-LAST:event_btnCrearAreaActionPerformed
 
+    public void cargarLista(){
+        modelo.ordenarListaAreas();
+        listaAreas.setListData(modelo.getListaAreas().toArray());
+    }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton btnCerrar;
