@@ -1,6 +1,6 @@
 package Dominio;
 
-public class Empleado { //deberian los manager y empleados heredar de lo mismo??
+public class Empleado implements Comparable<Empleado>{ //deberian los manager y empleados heredar de lo mismo??
     private String cedula;
     private String nombre;
     private String celular;
@@ -75,7 +75,10 @@ public class Empleado { //deberian los manager y empleados heredar de lo mismo??
     public String toString() { //ver que queremos que tenga el toString
         return nombre;
     }
-    
+    @Override
+    public int compareTo(Empleado unEmpleado){
+        return this.getSalario()-unEmpleado.getSalario();
+    }
     
     
 }

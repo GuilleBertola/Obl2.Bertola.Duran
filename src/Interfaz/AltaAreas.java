@@ -31,6 +31,7 @@ public class AltaAreas extends javax.swing.JFrame {
         jLabel5 = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
+        setTitle("Ingresar areas");
         setMinimumSize(null);
         setSize(new java.awt.Dimension(0, 0));
         getContentPane().setLayout(null);

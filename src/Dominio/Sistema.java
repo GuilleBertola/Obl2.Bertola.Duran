@@ -61,6 +61,9 @@ public class Sistema {
     public void ordenarListaManagers(){
         Collections.sort(listaManagers);
     }
+    public void ordenarListaEmpleados(){
+        Collections.sort(listaEmpleados);
+    }
     
     public boolean nombreAreaDisponible(String unNombre){
         boolean existe = false;

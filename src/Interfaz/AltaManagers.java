@@ -33,6 +33,7 @@ public class AltaManagers extends javax.swing.JFrame {
         btnIngresar = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
+        setTitle("Ingresar managers");
         getContentPane().setLayout(null);
 
         listaManagers.setModel(new javax.swing.AbstractListModel() {
