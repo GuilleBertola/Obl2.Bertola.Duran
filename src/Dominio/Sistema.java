@@ -1,12 +1,28 @@
 package Dominio;
 
-import java.util.ArrayList;
+import java.util.*;
 
 public class Sistema {
     private ArrayList<Area> listaAreas;
     private ArrayList<Manager> listaManagers;
     private ArrayList<Empleado> listaEmpleados;
     private ArrayList<Movimiento> listaMovimientos;
+
+    public ArrayList<Area> getListaAreas() {
+        return listaAreas;
+    }
+
+    public ArrayList<Manager> getListaManagers() {
+        return listaManagers;
+    }
+
+    public ArrayList<Empleado> getListaEmpleados() {
+        return listaEmpleados;
+    }
+
+    public ArrayList<Movimiento> getListaMovimientos() {
+        return listaMovimientos;
+    }
     
     public void agregarArea(Area unArea){
         listaAreas.add(unArea);
@@ -29,12 +45,34 @@ public class Sistema {
     public void eliminarEmpleado(Empleado unEmpleado){
         listaEmpleados.remove(unEmpleado);
     }
-    public Sistema(){
+     public Sistema(){
         listaAreas = new ArrayList<>();
         listaManagers = new ArrayList<>();
         listaEmpleados = new ArrayList<>();
         listaMovimientos = new ArrayList<>();
     }
+       
+    public void ordenarListaMoviminetos(){
+        Collections.sort(listaMovimientos);        
+    }
     
+    public boolean nombreAreaDisponible(String unNombre){
+        boolean existe = false;
+        for(Area area:getListaAreas()){
+            if(area.getNombre().equals(unNombre)){
+                existe = true;
+            }
+        }
+        return !existe;
+    }
     
+    public boolean existeCi(String unCi){
+        boolean existe = false;
+        for(Empleado e : listaEmpleados){
+            if(e.getCedula().equals(unCi)){
+                existe = true;
+            }
+        }
+        return existe;
+    }
 }
