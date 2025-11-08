@@ -1,6 +1,7 @@
 package Interfaz;
 
 import Dominio.*;
+import javax.swing.*;
 
 public class AltaEmpleados extends javax.swing.JFrame {
     
@@ -19,14 +20,14 @@ public class AltaEmpleados extends javax.swing.JFrame {
 
         jScrollPane1 = new javax.swing.JScrollPane();
         listaEmpleados = new javax.swing.JList();
-        jTextField1 = new javax.swing.JTextField();
-        jTextField2 = new javax.swing.JTextField();
-        jTextField3 = new javax.swing.JTextField();
+        txtNom = new javax.swing.JTextField();
+        txtCi = new javax.swing.JTextField();
+        txtCel = new javax.swing.JTextField();
         jLabel1 = new javax.swing.JLabel();
         jLabel2 = new javax.swing.JLabel();
         jLabel3 = new javax.swing.JLabel();
         jLabel4 = new javax.swing.JLabel();
-        jTextField4 = new javax.swing.JTextField();
+        txtSal = new javax.swing.JTextField();
         jLabel5 = new javax.swing.JLabel();
         jLabel6 = new javax.swing.JLabel();
         jScrollPane2 = new javax.swing.JScrollPane();
@@ -58,12 +59,12 @@ public class AltaEmpleados extends javax.swing.JFrame {
 
         getContentPane().add(jScrollPane1);
         jScrollPane1.setBounds(80, 70, 120, 146);
-        getContentPane().add(jTextField1);
-        jTextField1.setBounds(330, 60, 180, 22);
-        getContentPane().add(jTextField2);
-        jTextField2.setBounds(330, 90, 180, 22);
-        getContentPane().add(jTextField3);
-        jTextField3.setBounds(330, 150, 180, 22);
+        getContentPane().add(txtNom);
+        txtNom.setBounds(330, 60, 180, 22);
+        getContentPane().add(txtCi);
+        txtCi.setBounds(330, 90, 180, 22);
+        getContentPane().add(txtCel);
+        txtCel.setBounds(330, 150, 180, 22);
 
         jLabel1.setText("Nombre:");
         getContentPane().add(jLabel1);
@@ -80,8 +81,8 @@ public class AltaEmpleados extends javax.swing.JFrame {
         jLabel4.setText("Curriculum:");
         getContentPane().add(jLabel4);
         jLabel4.setBounds(90, 260, 70, 16);
-        getContentPane().add(jTextField4);
-        jTextField4.setBounds(330, 120, 180, 22);
+        getContentPane().add(txtSal);
+        txtSal.setBounds(330, 120, 180, 22);
 
         jLabel5.setText("Salario:");
         getContentPane().add(jLabel5);
@@ -152,7 +153,17 @@ public class AltaEmpleados extends javax.swing.JFrame {
     }//GEN-LAST:event_btnCerrarActionPerformed
 
     private void btnIngresarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnIngresarActionPerformed
-        // TODO add your handling code here:
+        String nom = txtNom.getText();
+        String cel = txtCel.getText();
+        String ci = txtCi.getText();
+        int salario = -1;
+        boolean todoOk = !modelo.existeCi(ci);
+        try{
+            salario = Integer.parseInt(txtSal.getText());
+        }catch(NumberFormatException e){
+            todoOk = false;
+            JOptionPane.showMessageDialog(this, "Ingrese un numero en presupuesto", "error", 0);
+        }
     }//GEN-LAST:event_btnIngresarActionPerformed
 
     private void listaEmpleadosValueChanged(javax.swing.event.ListSelectionEvent evt) {//GEN-FIRST:event_listaEmpleadosValueChanged
@@ -183,13 +194,13 @@ public class AltaEmpleados extends javax.swing.JFrame {
     private javax.swing.JScrollPane jScrollPane3;
     private javax.swing.JScrollPane jScrollPane4;
     private javax.swing.JTextArea jTextArea1;
-    private javax.swing.JTextField jTextField1;
-    private javax.swing.JTextField jTextField2;
-    private javax.swing.JTextField jTextField3;
-    private javax.swing.JTextField jTextField4;
     private javax.swing.JList listaAreas;
     private javax.swing.JList listaEmpleados;
     private javax.swing.JList listaManagers;
+    private javax.swing.JTextField txtCel;
+    private javax.swing.JTextField txtCi;
+    private javax.swing.JTextField txtNom;
+    private javax.swing.JTextField txtSal;
     // End of variables declaration//GEN-END:variables
     Sistema modelo;
 }

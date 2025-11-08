@@ -47,7 +47,7 @@ public class Menu extends javax.swing.JFrame {
         RepoEst = new javax.swing.JMenuItem();
         RepoMod = new javax.swing.JMenuItem();
 
-        setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+        setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
         getContentPane().setLayout(null);
 
         jLabel2.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Interfaz/guillefoto.jpg"))); // NOI18N
@@ -133,7 +133,7 @@ public class Menu extends javax.swing.JFrame {
 
         setJMenuBar(jMenuBar1);
 
-        pack();
+        setBounds(0, 0, 394, 358);
     }// </editor-fold>//GEN-END:initComponents
 
     private void areasActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_areasActionPerformed
