@@ -1,5 +1,6 @@
 package Interfaz;
 
+import Dominio.*;
 import Interfaz.*;
 import javax.swing.*;
 
@@ -9,7 +10,8 @@ public class Menu extends javax.swing.JFrame {
     private static final java.util.logging.Logger logger = java.util.logging.Logger.getLogger(Menu.class.getName());
 
     
-    public Menu() {
+    public Menu(Sistema sis) {
+        modelo = sis;
         initComponents();
         addKeyListener(new java.awt.event.KeyAdapter() {
         @Override
@@ -63,6 +65,11 @@ public class Menu extends javax.swing.JFrame {
         });
 
         AreaAlt.setText("Alta");
+        AreaAlt.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                AreaAltActionPerformed(evt);
+            }
+        });
         areas.add(AreaAlt);
 
         AreaBaj.setText("Baja");
@@ -84,6 +91,11 @@ public class Menu extends javax.swing.JFrame {
         ManAlt.setText("Managers");
 
         jMenuItem5.setText("Alta");
+        jMenuItem5.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jMenuItem5ActionPerformed(evt);
+            }
+        });
         ManAlt.add(jMenuItem5);
 
         ManBaj.setText("Baja");
@@ -133,9 +145,21 @@ public class Menu extends javax.swing.JFrame {
     }//GEN-LAST:event_AreaModActionPerformed
 
     private void jMenuItem8ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItem8ActionPerformed
-        // TODO add your handling code here:
+        AltaManagers vent = new AltaManagers(modelo);
+        vent.setVisible(true);
     }//GEN-LAST:event_jMenuItem8ActionPerformed
 
+    private void AreaAltActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_AreaAltActionPerformed
+        AltaAreas vent = new AltaAreas(modelo);
+        vent.setVisible(true);
+    }//GEN-LAST:event_AreaAltActionPerformed
+
+    private void jMenuItem5ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItem5ActionPerformed
+        AltaManagers vent = new AltaManagers(modelo);
+        vent.setVisible(true);
+    }//GEN-LAST:event_jMenuItem5ActionPerformed
+
+    
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JMenuItem AreaAlt;
@@ -156,4 +180,5 @@ public class Menu extends javax.swing.JFrame {
     private javax.swing.JMenuItem jMenuItem8;
     private javax.swing.JMenuItem jMenuItem9;
     // End of variables declaration//GEN-END:variables
+    private Sistema modelo;
 }

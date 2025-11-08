@@ -1,5 +1,6 @@
 package Dominio;
 
+import Interfaz.*;
 import java.util.*;
 
 public class Sistema {
@@ -46,12 +47,13 @@ public class Sistema {
         listaEmpleados.remove(unEmpleado);
     }
      public Sistema(){
+        
         listaAreas = new ArrayList<>();
         listaManagers = new ArrayList<>();
         listaEmpleados = new ArrayList<>();
         listaMovimientos = new ArrayList<>();
     }
-       
+
     public void ordenarListaMoviminetos(){
         Collections.sort(listaMovimientos);        
     }

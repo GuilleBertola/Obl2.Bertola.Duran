@@ -12,6 +12,12 @@ public class Obligatorio2 {
         AltaAreas vent = new AltaAreas(sistema);
         vent.setLocationRelativeTo(null);
         vent.setVisible(true);
+        
+        Menu vent1 = new Menu(sistema);
+        vent1.setLocationRelativeTo(null);
+        vent1.setVisible(true);
     }//para bajar lo que ya tengo subido, copio el link de github, git clone elLink
-
+    
+    
+    //falta poner en las ventanas que no se cierren las demas si cierro una
 }

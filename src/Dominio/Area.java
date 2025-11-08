@@ -34,7 +34,7 @@ public class Area implements Comparable<Area>{
         this.descripcion = descripcion;
         this.presupuesto = presupuesto;
     }
-
+    
     @Override
     public String toString() {//ver que queremos que tenga el toString
         return nombre;
