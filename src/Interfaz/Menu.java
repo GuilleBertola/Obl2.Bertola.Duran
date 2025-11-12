@@ -41,13 +41,18 @@ public class Menu extends javax.swing.JFrame {
         ManBaj = new javax.swing.JMenuItem();
         ManMod = new javax.swing.JMenuItem();
         EmpleAlt = new javax.swing.JMenu();
-        jMenuItem8 = new javax.swing.JMenuItem();
+        altaEmpleados = new javax.swing.JMenuItem();
         RepoInt = new javax.swing.JMenu();
         jMenuItem9 = new javax.swing.JMenuItem();
         RepoEst = new javax.swing.JMenuItem();
         RepoMod = new javax.swing.JMenuItem();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
+        addWindowListener(new java.awt.event.WindowAdapter() {
+            public void windowClosing(java.awt.event.WindowEvent evt) {
+                antesDeCerrar(evt);
+            }
+        });
         getContentPane().setLayout(null);
 
         jLabel2.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Interfaz/guillefoto.jpg"))); // NOI18N
@@ -84,6 +89,11 @@ public class Menu extends javax.swing.JFrame {
         areas.add(AreaMod);
 
         AreaMov.setText("Realizar Movimiento");
+        AreaMov.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                AreaMovActionPerformed(evt);
+            }
+        });
         areas.add(AreaMov);
 
         jMenuBar1.add(areas);
@@ -108,13 +118,13 @@ public class Menu extends javax.swing.JFrame {
 
         EmpleAlt.setText("Empleados");
 
-        jMenuItem8.setText("Alta");
-        jMenuItem8.addActionListener(new java.awt.event.ActionListener() {
+        altaEmpleados.setText("Alta");
+        altaEmpleados.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jMenuItem8ActionPerformed(evt);
+                altaEmpleadosActionPerformed(evt);
             }
         });
-        EmpleAlt.add(jMenuItem8);
+        EmpleAlt.add(altaEmpleados);
 
         jMenuBar1.add(EmpleAlt);
 
@@ -133,7 +143,7 @@ public class Menu extends javax.swing.JFrame {
 
         setJMenuBar(jMenuBar1);
 
-        setBounds(0, 0, 394, 358);
+        setBounds(0, 0, 611, 358);
     }// </editor-fold>//GEN-END:initComponents
 
     private void areasActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_areasActionPerformed
@@ -144,10 +154,10 @@ public class Menu extends javax.swing.JFrame {
         // TODO add your handling code here:
     }//GEN-LAST:event_AreaModActionPerformed
 
-    private void jMenuItem8ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItem8ActionPerformed
-        AltaManagers vent = new AltaManagers(modelo);
+    private void altaEmpleadosActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_altaEmpleadosActionPerformed
+        AltaEmpleados vent = new AltaEmpleados(modelo);
         vent.setVisible(true);
-    }//GEN-LAST:event_jMenuItem8ActionPerformed
+    }//GEN-LAST:event_altaEmpleadosActionPerformed
 
     private void AreaAltActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_AreaAltActionPerformed
         AltaAreas vent = new AltaAreas(modelo);
@@ -158,6 +168,15 @@ public class Menu extends javax.swing.JFrame {
         AltaManagers vent = new AltaManagers(modelo);
         vent.setVisible(true);
     }//GEN-LAST:event_jMenuItem5ActionPerformed
+
+    private void AreaMovActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_AreaMovActionPerformed
+        hacerModificacion vent = new hacerModificacion(modelo);
+        vent.setVisible(true);
+    }//GEN-LAST:event_AreaMovActionPerformed
+
+    private void antesDeCerrar(java.awt.event.WindowEvent evt) {//GEN-FIRST:event_antesDeCerrar
+        modelo.serializar();
+    }//GEN-LAST:event_antesDeCerrar
 
     
 
@@ -173,11 +192,11 @@ public class Menu extends javax.swing.JFrame {
     private javax.swing.JMenuItem RepoEst;
     private javax.swing.JMenu RepoInt;
     private javax.swing.JMenuItem RepoMod;
+    private javax.swing.JMenuItem altaEmpleados;
     private javax.swing.JMenu areas;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JMenuBar jMenuBar1;
     private javax.swing.JMenuItem jMenuItem5;
-    private javax.swing.JMenuItem jMenuItem8;
     private javax.swing.JMenuItem jMenuItem9;
     // End of variables declaration//GEN-END:variables
     private Sistema modelo;

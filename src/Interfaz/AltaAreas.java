@@ -110,12 +110,16 @@ public class AltaAreas extends javax.swing.JFrame {
             presupuesto = Integer.parseInt(txtPresupuesto.getText());
         }catch(NumberFormatException e){
             todoOk = false;
+            txtPresupuesto.setText("");
             JOptionPane.showMessageDialog(this, "Ingrese un numero en presupuesto", "error", 0);
         } 
         if(todoOk){
             modelo.agregarArea(new Area(nom, desc, presupuesto));
             JOptionPane.showMessageDialog(this, nom + " agregado con exito", "Confirmacion", 1);
             cargarLista();
+            txtNom.setText("");
+            txtDescripcion.setText("");
+            txtPresupuesto.setText("");
         }
     }//GEN-LAST:event_btnCrearAreaActionPerformed
 

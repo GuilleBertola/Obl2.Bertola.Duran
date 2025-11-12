@@ -1,9 +1,12 @@
 package Interfaz;
 
 import Dominio.*;
+import java.io.File;
 import javax.swing.*;
+import java.util.*;
+import Archivos.*;
 
-public class AltaEmpleados extends javax.swing.JFrame {
+public class AltaEmpleados extends javax.swing.JFrame implements Observer{
     
     private static final java.util.logging.Logger logger = java.util.logging.Logger.getLogger(AltaEmpleados.class.getName());
 
@@ -12,6 +15,7 @@ public class AltaEmpleados extends javax.swing.JFrame {
         modelo = sis;
         initComponents();
         cargarListas();
+        modelo.addObserver(this);
     }
 
     @SuppressWarnings("unchecked")
@@ -38,7 +42,7 @@ public class AltaEmpleados extends javax.swing.JFrame {
         btnCerrar = new javax.swing.JButton();
         btnIngresar = new javax.swing.JButton();
         jScrollPane4 = new javax.swing.JScrollPane();
-        jTextArea1 = new javax.swing.JTextArea();
+        txtCv = new javax.swing.JTextArea();
         jLabel8 = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
@@ -134,9 +138,9 @@ public class AltaEmpleados extends javax.swing.JFrame {
         getContentPane().add(btnIngresar);
         btnIngresar.setBounds(390, 420, 130, 23);
 
-        jTextArea1.setColumns(20);
-        jTextArea1.setRows(5);
-        jScrollPane4.setViewportView(jTextArea1);
+        txtCv.setColumns(20);
+        txtCv.setRows(5);
+        jScrollPane4.setViewportView(txtCv);
 
         getContentPane().add(jScrollPane4);
         jScrollPane4.setBounds(90, 280, 240, 90);
@@ -157,25 +161,60 @@ public class AltaEmpleados extends javax.swing.JFrame {
         String cel = txtCel.getText();
         String ci = txtCi.getText();
         int salario = -1;
+        Manager man = (Manager) listaManagers.getSelectedValue();
+        Area ar = (Area) listaAreas.getSelectedValue();
         boolean todoOk = !modelo.existeCi(ci);
+        if(ar == null || man == null){
+            JOptionPane.showMessageDialog(this, "Seleccione una area y un manager", "error", 0);
+            todoOk = false;
+        }
         try{
             salario = Integer.parseInt(txtSal.getText());
         }catch(NumberFormatException e){
             todoOk = false;
-            JOptionPane.showMessageDialog(this, "Ingrese un numero en presupuesto", "error", 0);
+            JOptionPane.showMessageDialog(this, "Ingrese un numero en salario", "error", 0);
+        }
+        if(todoOk) {
+           modelo.agregarEmpleado(new Empleado(ci, nom, cel, salario, man, ar));
+           guardarCv(ci);
+           listaManagers.clearSelection();
+           listaAreas.clearSelection();
+           txtNom.setText("");
+           txtCel.setText("");
+           txtCi.setText("");
+           txtSal.setText("");
         }
     }//GEN-LAST:event_btnIngresarActionPerformed
 
     private void listaEmpleadosValueChanged(javax.swing.event.ListSelectionEvent evt) {//GEN-FIRST:event_listaEmpleadosValueChanged
-        // TODO add your handling code here:
+        Empleado e = (Empleado) listaEmpleados.getSelectedValue();
+        txtNom.setText(e.getNombre());
+        txtCi.setText(e.getCedula());
+        txtCel.setText(e.getCelular());
+        //Falta resaltar el manager y el area. Leer letra, lo haria de otra forma
     }//GEN-LAST:event_listaEmpleadosValueChanged
 
+    @Override
+    public void update(Observable o, Object arg) {
+        cargarListas();
+    }
     
     public void cargarListas(){
         modelo.ordenarListaEmpleados();
         listaEmpleados.setListData(modelo.getListaEmpleados().toArray());
         listaManagers.setListData(modelo.getListaManagers().toArray());
         listaAreas.setListData(modelo.getListaAreas().toArray());
+    }
+    
+    public void guardarCv(String cedula){
+        File prueba = new File(System.getProperty("user.dir") + File.separator + "cvs");
+        if(!prueba.exists()){
+            prueba.mkdir();
+        }
+        ArchivoGrabacion cv = new ArchivoGrabacion(System.getProperty("user.dir")+ File.separator + "cvs" + "/CV" + cedula + ".txt");
+        cv.grabarLinea(txtCv.getText());
+        cv.cerrar();
+        txtCv.setText("");
     }
     
     // Variables declaration - do not modify//GEN-BEGIN:variables
@@ -193,12 +232,12 @@ public class AltaEmpleados extends javax.swing.JFrame {
     private javax.swing.JScrollPane jScrollPane2;
     private javax.swing.JScrollPane jScrollPane3;
     private javax.swing.JScrollPane jScrollPane4;
-    private javax.swing.JTextArea jTextArea1;
     private javax.swing.JList listaAreas;
     private javax.swing.JList listaEmpleados;
     private javax.swing.JList listaManagers;
     private javax.swing.JTextField txtCel;
     private javax.swing.JTextField txtCi;
+    private javax.swing.JTextArea txtCv;
     private javax.swing.JTextField txtNom;
     private javax.swing.JTextField txtSal;
     // End of variables declaration//GEN-END:variables

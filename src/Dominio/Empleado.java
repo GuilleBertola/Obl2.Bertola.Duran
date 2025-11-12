@@ -1,10 +1,11 @@
 package Dominio;
 
-public class Empleado implements Comparable<Empleado>{ //deberian los manager y empleados heredar de lo mismo??
+import java.io.Serializable;
+
+public class Empleado implements Comparable<Empleado>, Serializable{ //deberian los manager y empleados heredar de lo mismo??
     private String cedula;
     private String nombre;
     private String celular;
-    private String curriculum; //???
     private int salario;
     private Manager manager;
     private Area area;
@@ -23,14 +24,6 @@ public class Empleado implements Comparable<Empleado>{ //deberian los manager y 
 
     public void setCelular(String celular) {
         this.celular = celular;
-    }
-
-    public String getCurriculum() {
-        return curriculum;
-    }
-
-    public void setCurriculum(String curriculum) {
-        this.curriculum = curriculum;
     }
 
     public int getSalario() {
@@ -61,11 +54,10 @@ public class Empleado implements Comparable<Empleado>{ //deberian los manager y 
         return cedula;
     }//no hice setCedula porque una persona no puede cambiar su cedula
 
-    public Empleado(String cedula, String nombre, String celular, String curriculum, int salario, Manager manager, Area area) {
+    public Empleado(String cedula, String nombre, String celular, int salario, Manager manager, Area area) {
         this.cedula = cedula;
         this.nombre = nombre;
         this.celular = celular;
-        this.curriculum = curriculum;
         this.salario = salario;
         this.manager = manager;
         this.area = area;

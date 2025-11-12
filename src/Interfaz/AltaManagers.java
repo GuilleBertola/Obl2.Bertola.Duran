@@ -106,11 +106,16 @@ public class AltaManagers extends javax.swing.JFrame {
         }catch(NumberFormatException e){
             todoOk = false;
             JOptionPane.showMessageDialog(this, "Ingrese un numero en antiguedad", "error", 0);
+            txtAntig.setText("");
         }
         if(todoOk){
             modelo.agregarManager(new Manager(ci, nom, antig, cel));
             JOptionPane.showMessageDialog(this, nom + " agregado con exito", "Confirmacion", 1);
             cargarLista();
+            txtNom.setText("");
+            txtCi.setText("");
+            txtCel.setText("");
+            txtAntig.setText("");
         }
     }//GEN-LAST:event_btnIngresarActionPerformed
 

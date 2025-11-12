@@ -1,6 +1,9 @@
 package Interfaz;
 
 import Dominio.*;
+import java.io.FileInputStream;
+import java.io.IOException;
+import java.io.ObjectInputStream;
 public class Bienvenida extends javax.swing.JFrame {
 
     
@@ -30,7 +33,7 @@ public class Bienvenida extends javax.swing.JFrame {
             }
         });
         getContentPane().add(btnSisPrecargado);
-        btnSisPrecargado.setBounds(360, 90, 210, 40);
+        btnSisPrecargado.setBounds(360, 90, 240, 40);
 
         btnSisNuevo.setText("Sistema nuevo");
         btnSisNuevo.addActionListener(new java.awt.event.ActionListener() {
@@ -50,33 +53,35 @@ public class Bienvenida extends javax.swing.JFrame {
         getContentPane().add(btnSisGuardado);
         btnSisGuardado.setBounds(190, 90, 140, 40);
 
-        setBounds(0, 0, 605, 228);
+        setBounds(0, 0, 670, 228);
     }// </editor-fold>//GEN-END:initComponents
 
     private void btnSisPrecargadoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnSisPrecargadoActionPerformed
-        datosPrecargados();
+        modelo.datosPrecargados();
         abrirMenu();
     }//GEN-LAST:event_btnSisPrecargadoActionPerformed
 
     private void btnSisGuardadoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnSisGuardadoActionPerformed
-        // TODO add your handling code here:
+        desserializar();
+        abrirMenu();
     }//GEN-LAST:event_btnSisGuardadoActionPerformed
 
     private void btnSisNuevoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnSisNuevoActionPerformed
         abrirMenu();
     }//GEN-LAST:event_btnSisNuevoActionPerformed
 
-    public void datosPrecargados(){
-        modelo.agregarArea(new Area("Personal", "Reclutamiento de personal, promociones, gestión de cargos", 100000));
-        modelo.agregarArea(new Area("RRHH", "Relacionamiento en la empresa, organigrama, gestión de equipos", 80000));
-        modelo.agregarArea(new Area("Seguridad", "Seguridad física, vigilancia, seguridad informática, protocolos y políticas de seguridad", 120000));
-        modelo.agregarArea(new Area("Comunicaciones", "Comunicaciones internas, reglas y protocolos, comunicaciones con proveedores y clientes", 20000));
-        modelo.agregarArea(new Area("Marketing", "Acciones planificadas, publicidad en medios masivos, publicidad en redes, gestión de redes", 95000));
-        modelo.agregarManager(new Manager("4.568.369-1", "Ana Martínez", 10, "099 123456"));
-        modelo.agregarManager(new Manager("3.214.589-3", "Ricardo Morales", 4, "094 121212"));
-        modelo.agregarManager(new Manager("3.589.257-5", "Laura Torales", 1, "099 654321"));
-        modelo.agregarManager(new Manager("4.555.197-7", "Juan Pablo Zapata", 5, "099 202020"));
+    
+    public void desserializar(){
+        try{
+            FileInputStream arch = new FileInputStream("Datos");
+            ObjectInputStream leer = new ObjectInputStream(arch);
+            modelo = (Sistema) leer.readObject();
+            leer.close();
+        }catch(Exception e){
+            System.out.println("Error al desserealizar");
+        }
     }
+    
     
     public void abrirMenu(){
         Menu vent = new Menu(modelo);

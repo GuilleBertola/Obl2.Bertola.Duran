@@ -1,9 +1,13 @@
 package Dominio;
 
-public class Area implements Comparable<Area>{
+import java.io.Serializable;
+import java.util.Objects;
+
+public class Area implements Comparable<Area>, Serializable{
     private String nombre;
     private String descripcion;
     private int presupuesto;
+    private int presupuestoRestante;
 
     public String getNombre() {
         return nombre;
@@ -33,6 +37,7 @@ public class Area implements Comparable<Area>{
         this.nombre = nombre;
         this.descripcion = descripcion;
         this.presupuesto = presupuesto;
+        this.presupuestoRestante = presupuesto;
     }
     
     @Override
@@ -43,6 +48,22 @@ public class Area implements Comparable<Area>{
     @Override
     public int compareTo(Area unArea){
         return this.getNombre().compareTo(unArea.getNombre());
+    }
+
+    public boolean equals(Area unArea) {
+        return this.getNombre().equals(unArea.getNombre());
+    }
+    
+    public boolean presupuestoSuficiente(Empleado unEmpleado, int mes){
+        boolean sePuede = false;
+        int mesesRestantes = 12 - mes;
+        this.presupuestoRestante -= mesesRestantes*unEmpleado.getSalario();
+        if(this.presupuestoRestante >= 0){
+            sePuede = true;
+        }else{
+            this.presupuestoRestante += mesesRestantes*unEmpleado.getSalario();
+        }
+        return sePuede;
     }
     
 }

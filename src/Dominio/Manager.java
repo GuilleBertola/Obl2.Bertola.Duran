@@ -1,6 +1,8 @@
 package Dominio;
 
-public class Manager implements Comparable<Manager>{
+import java.io.Serializable;
+
+public class Manager implements Comparable<Manager>, Serializable{
     private String cedula;
     private String nombre;
     private int antiguedad; //leer letra sobre antiguedad

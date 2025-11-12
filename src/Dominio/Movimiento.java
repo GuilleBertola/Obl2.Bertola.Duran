@@ -1,10 +1,13 @@
 package Dominio;
 
-public class Movimiento implements Comparable<Movimiento>{
+import java.io.Serializable;
+
+public class Movimiento implements Comparable<Movimiento>, Serializable{
     private int mes;
     private Area areaOrigen;
     private Area areaDestino;
     private Empleado empleado;
+    private static String[] meses;
 
     public int getMes() {
         return mes;
@@ -21,14 +24,31 @@ public class Movimiento implements Comparable<Movimiento>{
     public Empleado getEmpleado() {
         return empleado;
     }
-    //no hice setter porque el proposito de la clase es almacenar informacion, no veo motivo de modificacion
-    public Movimiento(int mes, Area areaOrigen, Area areaDestino, Empleado empleado) {
-        this.mes = mes;
-        this.areaOrigen = areaOrigen;
-        this.areaDestino = areaDestino;
-        this.empleado = empleado;
+    
+    public String[] getMeses(){
+        return meses;
     }
 
+    public void setMes(int mes) {
+        this.mes = mes;
+    }
+
+    public void setAreaOrigen(Area areaOrigen) {
+        this.areaOrigen = areaOrigen;
+    }
+
+    public void setAreaDestino(Area areaDestino) {
+        this.areaDestino = areaDestino;
+    }
+
+    public void setEmpleado(Empleado empleado) {
+        this.empleado = empleado;
+    }
+    
+    public Movimiento() {
+        this.meses = crearMeses();
+    }
+    
     @Override
     public String toString() {
         return "Movimiento{" + "mes=" + mes + ", areaOrigen=" + areaOrigen + ", areaDestino=" + areaDestino + ", empleado=" + empleado + '}';
@@ -37,5 +57,20 @@ public class Movimiento implements Comparable<Movimiento>{
     @Override
     public int compareTo(Movimiento unMovimiento) {
         return this.getMes() - unMovimiento.getMes();        
+    }
+    
+    public int mesANum(String month){
+        int pos = -1;
+        for (int i = 1; i < meses.length && pos > 0; i++) {
+            if(month.equals(meses[i])){
+                pos = i;
+            }
+        }
+        return pos;
+    }
+    
+    public String[] crearMeses(){
+        String [] months = {"Enero", "Febrero", "Marzo", "Abril", "Mayo", "Junio", "Julio", "Agosto", "Setiembre", "Octubre", "Noviembre", "Diciembre"};
+        return months;
     }
 }
