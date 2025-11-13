@@ -14,6 +14,7 @@ public class hacerModificacion extends javax.swing.JFrame implements Observer{
         modelo = sis;
         cargarCombo();
         cargarAlgunasListas();
+        modelo.addObserver(this);
     }
 
     @SuppressWarnings("unchecked")
