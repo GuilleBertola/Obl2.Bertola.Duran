@@ -1,10 +1,13 @@
 package Interfaz;
+import Dominio.*;
 
 public class BajaAreas extends javax.swing.JFrame {
 
 
-    public BajaAreas() {
+    public BajaAreas(Sistema sis) {
+        modelo = sis;
         initComponents();
+        cargarLista();
     }
 
     @SuppressWarnings("unchecked")
@@ -12,53 +15,54 @@ public class BajaAreas extends javax.swing.JFrame {
     private void initComponents() {
 
         jScrollPane1 = new javax.swing.JScrollPane();
-        ListaAreasSinE = new javax.swing.JList<>();
+        ListaAreasSinE = new javax.swing.JList();
         SinE = new javax.swing.JLabel();
+        botonEliminar = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+        getContentPane().setLayout(null);
 
-        ListaAreasSinE.setModel(new javax.swing.AbstractListModel<String>() {
+        ListaAreasSinE.setModel(new javax.swing.AbstractListModel() {
             String[] strings = { "Item 1", "Item 2", "Item 3", "Item 4", "Item 5" };
             public int getSize() { return strings.length; }
-            public String getElementAt(int i) { return strings[i]; }
+            public Object getElementAt(int i) { return strings[i]; }
         });
         jScrollPane1.setViewportView(ListaAreasSinE);
 
-        SinE.setText("Areas sin empleados:");
+        getContentPane().add(jScrollPane1);
+        jScrollPane1.setBounds(16, 48, 150, 146);
 
-        javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
-        getContentPane().setLayout(layout);
-        layout.setHorizontalGroup(
-            layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(layout.createSequentialGroup()
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(layout.createSequentialGroup()
-                        .addGap(48, 48, 48)
-                        .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 47, javax.swing.GroupLayout.PREFERRED_SIZE))
-                    .addGroup(layout.createSequentialGroup()
-                        .addGap(16, 16, 16)
-                        .addComponent(SinE)))
-                .addContainerGap(272, Short.MAX_VALUE))
-        );
-        layout.setVerticalGroup(
-            layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(layout.createSequentialGroup()
-                .addGap(26, 26, 26)
-                .addComponent(SinE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(100, Short.MAX_VALUE))
-        );
+        SinE.setText("Areas sin empleados:");
+        getContentPane().add(SinE);
+        SinE.setBounds(35, 6, 112, 36);
+
+        botonEliminar.setText("Eliminar");
+        botonEliminar.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                botonEliminarActionPerformed(evt);
+            }
+        });
+        getContentPane().add(botonEliminar);
+        botonEliminar.setBounds(50, 220, 73, 23);
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
+    private void botonEliminarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_botonEliminarActionPerformed
+        //xcvbnm,.
+    }//GEN-LAST:event_botonEliminarActionPerformed
 
+    public void cargarLista(){
+        ListaAreasSinE.setListData(modelo.areasSinE().toArray());
+    }
+    
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JList<String> ListaAreasSinE;
+    private javax.swing.JList ListaAreasSinE;
     private javax.swing.JLabel SinE;
+    private javax.swing.JButton botonEliminar;
     private javax.swing.JScrollPane jScrollPane1;
     // End of variables declaration//GEN-END:variables
+    private Sistema modelo;
 }
