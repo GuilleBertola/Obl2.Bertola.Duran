@@ -53,6 +53,11 @@ public class Menu extends javax.swing.JFrame {
                 antesDeCerrar(evt);
             }
         });
+        addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyPressed(java.awt.event.KeyEvent evt) {
+                formKeyPressed(evt);
+            }
+        });
         getContentPane().setLayout(null);
 
         jLabel2.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Interfaz/guillefoto.jpg"))); // NOI18N
@@ -170,13 +175,17 @@ public class Menu extends javax.swing.JFrame {
     }//GEN-LAST:event_jMenuItem5ActionPerformed
 
     private void AreaMovActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_AreaMovActionPerformed
-        hacerModificacion vent = new hacerModificacion(modelo);
+        HacerMovimiento vent = new HacerMovimiento(modelo);
         vent.setVisible(true);
     }//GEN-LAST:event_AreaMovActionPerformed
 
     private void antesDeCerrar(java.awt.event.WindowEvent evt) {//GEN-FIRST:event_antesDeCerrar
         modelo.serializar();
     }//GEN-LAST:event_antesDeCerrar
+
+    private void formKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_formKeyPressed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_formKeyPressed
 
     
 

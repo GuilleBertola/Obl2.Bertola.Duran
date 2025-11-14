@@ -4,10 +4,10 @@ import Dominio.*;
 import java.io.FileInputStream;
 import java.io.IOException;
 import java.io.ObjectInputStream;
-public class Bienvenida extends javax.swing.JFrame {
+public class ElegirSistema extends javax.swing.JFrame {
 
     
-    public Bienvenida(Sistema sis) {
+    public ElegirSistema(Sistema sis) {
         initComponents();
         modelo = sis;
     }

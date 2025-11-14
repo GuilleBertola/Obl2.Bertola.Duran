@@ -5,11 +5,11 @@ import java.util.*;
 import javax.swing.*;
 
 
-public class hacerModificacion extends javax.swing.JFrame implements Observer{
+public class HacerMovimiento extends javax.swing.JFrame implements Observer{
     
-    private static final java.util.logging.Logger logger = java.util.logging.Logger.getLogger(hacerModificacion.class.getName());
+    private static final java.util.logging.Logger logger = java.util.logging.Logger.getLogger(HacerMovimiento.class.getName());
 
-    public hacerModificacion(Sistema sis) {
+    public HacerMovimiento(Sistema sis) {
         initComponents();
         modelo = sis;
         cargarCombo();
