@@ -164,8 +164,8 @@ public class AltaEmpleados extends javax.swing.JFrame implements Observer{
         Manager man = (Manager) listaManagers.getSelectedValue();
         Area ar = (Area) listaAreas.getSelectedValue();
         boolean todoOk = !modelo.existeCi(ci);
-        if(ar == null || man == null){
-            JOptionPane.showMessageDialog(this, "Seleccione una area y un manager", "error", 0);
+        if(ar == null || man == null || txtCv.getText() == ""){
+            JOptionPane.showMessageDialog(this, "Asegurese de completar todos los datos", "error", 0);
             todoOk = false;
         }
         try{
@@ -188,9 +188,30 @@ public class AltaEmpleados extends javax.swing.JFrame implements Observer{
 
     private void listaEmpleadosValueChanged(javax.swing.event.ListSelectionEvent evt) {//GEN-FIRST:event_listaEmpleadosValueChanged
         Empleado e = (Empleado) listaEmpleados.getSelectedValue();
-        txtNom.setText(e.getNombre());
-        txtCi.setText(e.getCedula());
-        txtCel.setText(e.getCelular());
+        if(e != null){
+            
+            String nom = e.getNombre();
+            String ci = e.getCedula();
+            String cel = e.getCelular();
+            int sal = e.getSalario();
+            Manager man = e.getManager();
+            Area area = e.getArea();
+            ArchivoLectura leer = new ArchivoLectura(System.getProperty("user.dir")+ File.separator + "cvs" + "/CV" + ci + ".txt");
+            String curr = "";
+            while(leer.hayMasLineas()){
+                curr +=  leer.linea();
+            }
+            leer.cerrar();
+            String texto = "Nombre: " + nom + "\n" + 
+                           "Cedula: " + ci + "\n" +
+                           "Numero de telefono: " + cel + "\n" +
+                           "Salario: " + sal + "\n" +
+                           "Manager: " + man + "\n" +
+                           "Area: " + area + "\n" +
+                           "Curriculum: " + curr;
+            
+            JOptionPane.showMessageDialog(this, texto, "Informacion empleados", 1);
+        }
         //Falta resaltar el manager y el area. Leer letra, lo haria de otra forma
     }//GEN-LAST:event_listaEmpleadosValueChanged
 

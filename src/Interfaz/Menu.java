@@ -47,7 +47,7 @@ public class Menu extends javax.swing.JFrame {
         RepoEst = new javax.swing.JMenuItem();
         RepoMod = new javax.swing.JMenuItem();
 
-        setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
+        setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         addWindowListener(new java.awt.event.WindowAdapter() {
             public void windowClosing(java.awt.event.WindowEvent evt) {
                 antesDeCerrar(evt);
@@ -156,7 +156,8 @@ public class Menu extends javax.swing.JFrame {
     }//GEN-LAST:event_areasActionPerformed
 
     private void AreaModActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_AreaModActionPerformed
-        // TODO add your handling code here:
+        ModificacionAreas vent = new ModificacionAreas(modelo);
+        vent.setVisible(true);
     }//GEN-LAST:event_AreaModActionPerformed
 
     private void altaEmpleadosActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_altaEmpleadosActionPerformed

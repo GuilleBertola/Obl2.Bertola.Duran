@@ -51,7 +51,15 @@ public class Sistema extends Observable implements Serializable {
     public void eliminarEmpleado(Empleado unEmpleado){
         listaEmpleados.remove(unEmpleado);
     }
-    
+    public Area getArea(String nom){
+        Area ret = null;
+        for(Area a : this.listaAreas){
+            if(a.getNombre().equals(nom)){
+                ret = a;
+            }
+        }
+        return ret;
+    }
      public Sistema(){
         
         listaAreas = new ArrayList<>();
