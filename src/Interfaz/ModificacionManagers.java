@@ -2,8 +2,9 @@ package Interfaz;
 
 import Dominio.*;
 import javax.swing.*;
+import java.util.*;
 
-public class ModificacionManagers extends javax.swing.JFrame {
+public class ModificacionManagers extends javax.swing.JFrame implements Observer{
     
     private static final java.util.logging.Logger logger = java.util.logging.Logger.getLogger(ModificacionManagers.class.getName());
 
@@ -117,9 +118,11 @@ public class ModificacionManagers extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void btnIngresarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnIngresarActionPerformed
-        
-        
-        
+        String cel = txtCel.getText();
+        String ci = txtCi.getText();
+        //aca va el cambio
+        JOptionPane.showMessageDialog(this, "Modificacion hecha con exito", "Confirmacion", 1);
+        cargarLista();
         listaManagers.clearSelection();
     }//GEN-LAST:event_btnIngresarActionPerformed
 
@@ -147,6 +150,11 @@ public class ModificacionManagers extends javax.swing.JFrame {
     public void cargarLista(){
         modelo.ordenarListaManagers();
         listaManagers.setListData(modelo.getListaManagers().toArray());
+    }
+    
+    @Override
+    public void update(Observable o, Object arg) {
+        cargarLista();
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
