@@ -83,6 +83,11 @@ public class Menu extends javax.swing.JFrame {
         areas.add(AreaAlt);
 
         AreaBaj.setText("Baja");
+        AreaBaj.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                AreaBajActionPerformed(evt);
+            }
+        });
         areas.add(AreaBaj);
 
         AreaMod.setText("Modificación");
@@ -114,6 +119,11 @@ public class Menu extends javax.swing.JFrame {
         ManAlt.add(jMenuItem5);
 
         ManBaj.setText("Baja");
+        ManBaj.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                ManBajActionPerformed(evt);
+            }
+        });
         ManAlt.add(ManBaj);
 
         ManMod.setText("Modificación");
@@ -187,6 +197,16 @@ public class Menu extends javax.swing.JFrame {
     private void formKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_formKeyPressed
         // TODO add your handling code here:
     }//GEN-LAST:event_formKeyPressed
+
+    private void AreaBajActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_AreaBajActionPerformed
+        BajaAreas vent= new BajaAreas(modelo);
+        vent.setVisible(true);
+    }//GEN-LAST:event_AreaBajActionPerformed
+
+    private void ManBajActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_ManBajActionPerformed
+        BajaManagers vent= new BajaManagers(modelo);
+        vent.setVisible(true);
+    }//GEN-LAST:event_ManBajActionPerformed
 
     
 

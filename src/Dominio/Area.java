@@ -66,4 +66,5 @@ public class Area implements Comparable<Area>, Serializable{
         return sePuede;
     }
     
+    
 }

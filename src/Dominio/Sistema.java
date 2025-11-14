@@ -116,6 +116,16 @@ public class Sistema extends Observable implements Serializable {
         return empleados;
     }
     
+        public ArrayList<Empleado> listarEmpleadosMan(Manager unManager){
+        ArrayList<Empleado> empleados = new ArrayList<>();
+        for(Empleado unEmpleado : this.listaEmpleados){
+            if(unEmpleado.getManager().equals(unManager)){
+                empleados.add(unEmpleado);
+            }
+        }
+        return empleados;
+    }
+    
     public void serializar(){
         try{
             FileOutputStream arch = new FileOutputStream("Datos");
@@ -125,6 +135,26 @@ public class Sistema extends Observable implements Serializable {
         }catch(IOException e){
             System.out.println("Error al serializar");
         }
+    }
+    
+    public ArrayList<Area> areasSinE(){
+        ArrayList<Area> lista=new ArrayList<>();
+        for (int i = 0; i<this.listaAreas.size(); i++) {
+            if(listarEmpleadosArea(this.listaAreas.get(i)).isEmpty()){
+                lista.add(listaAreas.get(i));
+            }
+        }
+        return lista;
+    }
+    
+    public ArrayList<Manager> managersSinE(){
+        ArrayList<Manager> lista=new ArrayList<>();
+        for (int i = 0; i < this.listaManagers.size(); i++) {
+            if(listarEmpleadosMan(this.listaManagers.get(i)).isEmpty()){
+                lista.add(listaManagers.get(i));
+            }
+        }
+        return lista;
     }
     
     public void datosPrecargados(){
