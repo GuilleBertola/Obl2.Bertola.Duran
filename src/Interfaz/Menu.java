@@ -152,6 +152,11 @@ public class Menu extends javax.swing.JFrame {
         RepoInt.add(RepoEst);
 
         RepoMod.setText("Reporte de movimientos");
+        RepoMod.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                RepoModActionPerformed(evt);
+            }
+        });
         RepoInt.add(RepoMod);
 
         jMenuBar1.add(RepoInt);
@@ -207,6 +212,11 @@ public class Menu extends javax.swing.JFrame {
         BajaManagers vent= new BajaManagers(modelo);
         vent.setVisible(true);
     }//GEN-LAST:event_ManBajActionPerformed
+
+    private void RepoModActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_RepoModActionPerformed
+        ReporteDeMov vent= new ReporteDeMov(modelo);
+        vent.setVisible(true);
+    }//GEN-LAST:event_RepoModActionPerformed
 
     
 

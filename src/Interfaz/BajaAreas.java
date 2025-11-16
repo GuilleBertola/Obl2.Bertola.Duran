@@ -1,13 +1,19 @@
 package Interfaz;
-import Dominio.*;
 
-public class BajaAreas extends javax.swing.JFrame {
+import Dominio.*;
+import java.io.File;
+import javax.swing.*;
+import java.util.*;
+import Archivos.*;
+
+public class BajaAreas extends javax.swing.JFrame implements Observer {
 
 
     public BajaAreas(Sistema sis) {
         modelo = sis;
         initComponents();
         cargarLista();
+        modelo.addObserver(this);
     }
 
     @SuppressWarnings("unchecked")
@@ -18,6 +24,7 @@ public class BajaAreas extends javax.swing.JFrame {
         ListaAreasSinE = new javax.swing.JList();
         SinE = new javax.swing.JLabel();
         botonEliminar = new javax.swing.JButton();
+        cajaArea = new javax.swing.JTextField();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         getContentPane().setLayout(null);
@@ -26,6 +33,11 @@ public class BajaAreas extends javax.swing.JFrame {
             String[] strings = { "Item 1", "Item 2", "Item 3", "Item 4", "Item 5" };
             public int getSize() { return strings.length; }
             public Object getElementAt(int i) { return strings[i]; }
+        });
+        ListaAreasSinE.addListSelectionListener(new javax.swing.event.ListSelectionListener() {
+            public void valueChanged(javax.swing.event.ListSelectionEvent evt) {
+                ListaAreasSinEValueChanged(evt);
+            }
         });
         jScrollPane1.setViewportView(ListaAreasSinE);
 
@@ -44,14 +56,29 @@ public class BajaAreas extends javax.swing.JFrame {
         });
         getContentPane().add(botonEliminar);
         botonEliminar.setBounds(50, 220, 73, 23);
+        getContentPane().add(cajaArea);
+        cajaArea.setBounds(230, 60, 140, 22);
 
-        pack();
+        setBounds(0, 0, 414, 308);
     }// </editor-fold>//GEN-END:initComponents
 
     private void botonEliminarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_botonEliminarActionPerformed
-        //xcvbnm,.
+        Area a = (Area) ListaAreasSinE.getSelectedValue();
+        modelo.eliminarArea(a);
     }//GEN-LAST:event_botonEliminarActionPerformed
 
+    private void ListaAreasSinEValueChanged(javax.swing.event.ListSelectionEvent evt) {//GEN-FIRST:event_ListaAreasSinEValueChanged
+        Area a = (Area) ListaAreasSinE.getSelectedValue();
+        if(a==null){
+            cajaArea.setText("");
+        }
+        else{
+            cajaArea.setText(a.getNombre());
+        }
+    }//GEN-LAST:event_ListaAreasSinEValueChanged
+
+
+    
     public void cargarLista(){
         ListaAreasSinE.setListData(modelo.areasSinE().toArray());
     }
@@ -62,7 +89,13 @@ public class BajaAreas extends javax.swing.JFrame {
     private javax.swing.JList ListaAreasSinE;
     private javax.swing.JLabel SinE;
     private javax.swing.JButton botonEliminar;
+    private javax.swing.JTextField cajaArea;
     private javax.swing.JScrollPane jScrollPane1;
     // End of variables declaration//GEN-END:variables
     private Sistema modelo;
+
+    @Override
+    public void update(Observable o, Object arg) {
+        cargarLista();
+    }
 }
