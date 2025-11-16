@@ -44,9 +44,11 @@ public class Sistema extends Observable implements Serializable {
     }
     public void eliminarArea(Area unArea){
         listaAreas.remove(unArea);
+        notificar();
     }
     public void eliminarManager(Manager unManager){
         listaManagers.remove(unManager);
+        notificar();
     }
     public void eliminarEmpleado(Empleado unEmpleado){
         listaEmpleados.remove(unEmpleado);
