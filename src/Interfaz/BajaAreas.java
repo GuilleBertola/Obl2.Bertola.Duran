@@ -26,7 +26,7 @@ public class BajaAreas extends javax.swing.JFrame implements Observer {
         botonEliminar = new javax.swing.JButton();
         cajaArea = new javax.swing.JTextField();
 
-        setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+        setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
         getContentPane().setLayout(null);
 
         ListaAreasSinE.setModel(new javax.swing.AbstractListModel() {

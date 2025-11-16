@@ -8,7 +8,7 @@ import java.io.File;
 import java.util.*;
 import javax.swing.*;
 
-public class ReporteEstado extends javax.swing.JFrame {
+public class ReporteEstado extends javax.swing.JFrame implements Observer {
     
     //private static final java.util.logging.Logger logger = java.util.logging.Logger.getLogger(ReporteEstado.class.getName());
 
@@ -49,7 +49,7 @@ public class ReporteEstado extends javax.swing.JFrame {
         getContentPane().add(panelEmpleados);
         panelEmpleados.setBounds(120, 70, 320, 130);
 
-        txtInfo.setText("Aca hay una etiqueta");
+        txtInfo.setText("Reporte");
         getContentPane().add(txtInfo);
         txtInfo.setBounds(200, 30, 170, 16);
 
@@ -112,11 +112,16 @@ public class ReporteEstado extends javax.swing.JFrame {
             JOptionPane.showMessageDialog(null, texto, "Informacion empleados", 1);
         }
     }
+    
+    @Override
+    public void update(Observable o, Object arg) {
+        cargarLista();
+    }
 
     public void cargarLista(){
         modelo.ordenarListaAreasXPresupuesto();
         listaAreas.setListData(modelo.getListaAreas().toArray());
-        //listaAreas.setCellRenderer(cellRenderer); Averiguar que es un cellRenderer
+        listaAreas.setCellRenderer(new comoPintarLaTabla()); 
     }
     
     // Variables declaration - do not modify//GEN-BEGIN:variables

@@ -36,8 +36,9 @@ public class Area implements Comparable<Area>, Serializable{
     public int getPresupuestoRestante() {
         return presupuestoRestante;
     }
-    
-    
+    public void restarAlPresupuestoRestante(int aRestar){
+        presupuestoRestante += aRestar;
+    }
 
     public Area(String nombre, String descripcion, int presupuesto) {
         this.nombre = nombre;
@@ -62,8 +63,8 @@ public class Area implements Comparable<Area>, Serializable{
     
     public boolean presupuestoSuficiente(Empleado unEmpleado, int mes){
         boolean sePuede = false;
-        int mesesRestantes = 12 - mes;
-        this.presupuestoRestante -= mesesRestantes*unEmpleado.getSalario();
+        int mesesRestantes = 13 - mes;
+        this.presupuestoRestante += -(mesesRestantes*unEmpleado.getSalario());
         if(this.presupuestoRestante >= 0){
             sePuede = true;
         }else{

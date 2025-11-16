@@ -95,16 +95,25 @@ public class Sistema extends Observable implements Serializable {
     public void ordenarListaAreas(){
         Collections.sort(listaAreas);
     }
-    public void ordenarListaAreasXPresupuesto(){ //ordena mal
+    public void ordenarListaAreasXPresupuesto(){
         Collections.sort(listaAreas, 
                 new Comparator<Area>(){
                     @Override
                     public int compare(Area a1, Area a2){
-                        int dif = (a2.getPresupuesto()-a2.getPresupuestoRestante())/a2.getPresupuesto() - (a1.getPresupuestoRestante()-a1.getPresupuestoRestante())/a1.getPresupuesto();
+                        float dif = (((float)a2.getPresupuesto()-(float)a2.getPresupuestoRestante())/(float)a2.getPresupuesto()) - (((float)a1.getPresupuesto()-(float)a1.getPresupuestoRestante())/(float)a1.getPresupuesto());
                         if(dif == 0){
-                            dif = a1.getNombre().toUpperCase().compareTo(a2.getNombre().toUpperCase());
+                            dif = a2.getNombre().toUpperCase().compareTo(a1.getNombre().toUpperCase());
                         }
-                        return dif;
+                        int sig = 0;
+                        if(dif < 0){
+                            sig = -1;
+                        }
+                        else{
+                            if(dif > 0){
+                                sig = 1;
+                            }
+                        }
+                        return sig;
                     }
                 });
     }
