@@ -60,6 +60,25 @@ public class Sistema extends Observable implements Serializable {
         }
         return ret;
     }
+    public Manager getManager(String ci){
+        Manager ret = null;
+        for(Manager m : this.listaManagers){
+            if(m.getCedula().equals(ci)){
+                ret = m;
+            }
+        }
+        return ret;
+    }
+    public Empleado getEmpleado(String ci){
+        Empleado ret = null;
+        for(Empleado e : this.listaEmpleados){
+            if(e.getCedula().equals(ci)){
+                ret = e;
+            }
+        }
+        return ret;
+    }
+    
      public Sistema(){
         
         listaAreas = new ArrayList<>();
@@ -73,6 +92,19 @@ public class Sistema extends Observable implements Serializable {
     }
     public void ordenarListaAreas(){
         Collections.sort(listaAreas);
+    }
+    public void ordenarListaAreasXPresupuesto(){ //ordena mal
+        Collections.sort(listaAreas, 
+                new Comparator<Area>(){
+                    @Override
+                    public int compare(Area a1, Area a2){
+                        int dif = (a2.getPresupuesto()-a2.getPresupuestoRestante())/a2.getPresupuesto() - (a1.getPresupuestoRestante()-a1.getPresupuestoRestante())/a1.getPresupuesto();
+                        if(dif == 0){
+                            dif = a1.getNombre().toUpperCase().compareTo(a2.getNombre().toUpperCase());
+                        }
+                        return dif;
+                    }
+                });
     }
     public void ordenarListaManagers(){
         Collections.sort(listaManagers);
@@ -172,6 +204,37 @@ public class Sistema extends Observable implements Serializable {
     public void notificar(){
         setChanged();
         notifyObservers();
+    }
+    
+    public int colorBtn(Empleado unEmpleado){ //capaz me estoy re complicando, el objetivo del metodo es separar a los empleados en 5 percentiles de sueldos, para separarlos por color
+       int percentil = 0;
+       ArrayList<Empleado> lista = listarEmpleadosArea(unEmpleado.getArea());
+       int max = unEmpleado.getSalario();
+       int min = unEmpleado.getSalario();
+       for(Empleado e : lista){
+           if(e.getSalario()>max){
+               max = e.getSalario();
+           }
+           if(e.getSalario()<min){
+               min = e.getSalario();
+           }
+        }
+        int rango = max - min;
+        int paso = rango / 5;
+        boolean eligio = false;
+        if(unEmpleado.getSalario() == max){
+            percentil = 5;
+        }else{
+            for (int i = 1; i <= 5 && !eligio; i++) {
+                int sum = min + i * paso;
+                if(unEmpleado.getSalario() <= sum){
+                    percentil = i;
+                    eligio = true;
+                }
+            }
+        }
+        
+        return percentil * 50;
     }
     
     

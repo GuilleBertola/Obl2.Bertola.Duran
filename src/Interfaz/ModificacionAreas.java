@@ -6,12 +6,11 @@ import java.util.*;
 
 public class ModificacionAreas extends javax.swing.JFrame implements Observer{
     
-    private static final java.util.logging.Logger logger = java.util.logging.Logger.getLogger(ModificacionAreas.class.getName());
-
     public ModificacionAreas(Sistema sis) {
         modelo = sis;
         initComponents();
         cargarLista();
+        modelo.addObserver(this);
     }
 
     @SuppressWarnings("unchecked")

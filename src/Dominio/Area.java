@@ -33,6 +33,12 @@ public class Area implements Comparable<Area>, Serializable{
         this.presupuesto = presupuesto;
     }
 
+    public int getPresupuestoRestante() {
+        return presupuestoRestante;
+    }
+    
+    
+
     public Area(String nombre, String descripcion, int presupuesto) {
         this.nombre = nombre;
         this.descripcion = descripcion;

@@ -12,6 +12,7 @@ public class ModificacionManagers extends javax.swing.JFrame implements Observer
         modelo = sis;
         initComponents();
         cargarLista();
+        modelo.addObserver(this);
         
     }
 
@@ -120,7 +121,7 @@ public class ModificacionManagers extends javax.swing.JFrame implements Observer
     private void btnIngresarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnIngresarActionPerformed
         String cel = txtCel.getText();
         String ci = txtCi.getText();
-        //aca va el cambio
+        modelo.getManager(ci).setCelular(cel);
         JOptionPane.showMessageDialog(this, "Modificacion hecha con exito", "Confirmacion", 1);
         cargarLista();
         listaManagers.clearSelection();
@@ -143,7 +144,7 @@ public class ModificacionManagers extends javax.swing.JFrame implements Observer
             txtCi.setText(man.getCedula());
             txtCel.setText(man.getCelular());
             txtAntig.setText("" + man.getAntiguedad());
-            txtCant.setText("Metodo santi.length");
+            txtCant.setText("" + modelo.listarEmpleadosMan(man).size());
         }
     }//GEN-LAST:event_listaManagersValueChanged
 

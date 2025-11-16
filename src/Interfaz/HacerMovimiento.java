@@ -95,14 +95,19 @@ public class HacerMovimiento extends javax.swing.JFrame implements Observer{
 
     private void btnAceptarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnAceptarActionPerformed
         Movimiento mov = new Movimiento();
+        boolean todoOk = true;
         int unMes = mov.mesANum((String) combo.getSelectedItem());
         mov.setMes(unMes);
         mov.setAreaOrigen((Area) listaOrigen.getSelectedValue());
         Area destino = (Area) listaDestinos.getSelectedValue();
-        mov.setAreaDestino(destino);
+        if(destino == null){
+            todoOk = false;
+        }else{
+            mov.setAreaDestino(destino);
+        }
         Empleado unEmpleado = (Empleado) listaEmpleados.getSelectedValue();
         mov.setEmpleado(unEmpleado);
-        if(unEmpleado != null){
+        if(unEmpleado != null && todoOk){
             if(destino.presupuestoSuficiente(unEmpleado, unMes)){
                 modelo.agregarMovimiento(mov);
                 unEmpleado.setArea(destino);
@@ -114,7 +119,7 @@ public class HacerMovimiento extends javax.swing.JFrame implements Observer{
                 JOptionPane.showMessageDialog(this, "No hay presupuesto suficiente en " + destino + " para realizar el cambio", "Error", 2);
             }
         }else{
-            JOptionPane.showMessageDialog(this, "Seleccione un empleado", "Error", 2);
+            JOptionPane.showMessageDialog(this, "Haga una seleccion en todos los campos", "Error", 2);
         }
     }//GEN-LAST:event_btnAceptarActionPerformed
 

@@ -127,6 +127,11 @@ public class Menu extends javax.swing.JFrame {
         ManAlt.add(ManBaj);
 
         ManMod.setText("Modificación");
+        ManMod.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                ManModActionPerformed(evt);
+            }
+        });
         ManAlt.add(ManMod);
 
         jMenuBar1.add(ManAlt);
@@ -149,6 +154,11 @@ public class Menu extends javax.swing.JFrame {
         RepoInt.add(jMenuItem9);
 
         RepoEst.setText("Reporte de estado de áreas");
+        RepoEst.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                RepoEstActionPerformed(evt);
+            }
+        });
         RepoInt.add(RepoEst);
 
         RepoMod.setText("Reporte de movimientos");
@@ -208,7 +218,16 @@ public class Menu extends javax.swing.JFrame {
         vent.setVisible(true);
     }//GEN-LAST:event_ManBajActionPerformed
 
-    
+    private void ManModActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_ManModActionPerformed
+        ModificacionManagers vent= new ModificacionManagers(modelo);
+        vent.setVisible(true);
+    }//GEN-LAST:event_ManModActionPerformed
+
+    private void RepoEstActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_RepoEstActionPerformed
+        ReporteEstado vent= new ReporteEstado(modelo);
+        vent.setVisible(true);
+    }//GEN-LAST:event_RepoEstActionPerformed
+ 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JMenuItem AreaAlt;

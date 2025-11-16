@@ -175,21 +175,26 @@ public class AltaEmpleados extends javax.swing.JFrame implements Observer{
             JOptionPane.showMessageDialog(this, "Ingrese un numero en salario", "error", 0);
         }
         if(todoOk) {
-           modelo.agregarEmpleado(new Empleado(ci, nom, cel, salario, man, ar));
-           guardarCv(ci);
-           listaManagers.clearSelection();
-           listaAreas.clearSelection();
-           txtNom.setText("");
-           txtCel.setText("");
-           txtCi.setText("");
-           txtSal.setText("");
+           Empleado nuevo = new Empleado(ci, nom, cel, salario, man, ar);
+           if(ar.presupuestoSuficiente(nuevo, 0)){
+                modelo.agregarEmpleado(new Empleado(ci, nom, cel, salario, man, ar));
+                guardarCv(ci);
+                listaManagers.clearSelection();
+                listaAreas.clearSelection();
+                txtNom.setText("");
+                txtCel.setText("");
+                txtCi.setText("");
+                txtSal.setText("");
+                JOptionPane.showMessageDialog(this, "Ingresado con exito", "Confirmacion", 1);
+           }else{
+               JOptionPane.showMessageDialog(this, "Presupuesto insuficiente", "error", 0);
+           }
         }
     }//GEN-LAST:event_btnIngresarActionPerformed
 
     private void listaEmpleadosValueChanged(javax.swing.event.ListSelectionEvent evt) {//GEN-FIRST:event_listaEmpleadosValueChanged
         Empleado e = (Empleado) listaEmpleados.getSelectedValue();
         if(e != null){
-            
             String nom = e.getNombre();
             String ci = e.getCedula();
             String cel = e.getCelular();
@@ -212,7 +217,7 @@ public class AltaEmpleados extends javax.swing.JFrame implements Observer{
             
             JOptionPane.showMessageDialog(this, texto, "Informacion empleados", 1);
         }
-        //Falta resaltar el manager y el area. Leer letra, lo haria de otra forma
+        
     }//GEN-LAST:event_listaEmpleadosValueChanged
 
     @Override
