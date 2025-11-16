@@ -1,9 +1,8 @@
 package Interfaz;
+
 import Dominio.*;
 import javax.swing.*;
 import javax.swing.table.DefaultTableModel;
-
-
 
 public class ReporteDeMov extends javax.swing.JFrame {
     DefaultTableModel mt = new DefaultTableModel();
@@ -16,8 +15,6 @@ public ReporteDeMov(Sistema sis) {
     mt.setColumnIdentifiers(new Object[]{"Movimientos", "Mes", "Origen", "Destino", "Empleado"});
     JTable1.setModel(mt);
 }
-
-
 
     @SuppressWarnings("unchecked")
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents

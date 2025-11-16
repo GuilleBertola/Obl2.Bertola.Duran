@@ -70,7 +70,7 @@ public class Movimiento implements Comparable<Movimiento>, Serializable{
     }
     
     public String[] crearMeses(){
-        String [] months = {"Enero", "Febrero", "Marzo", "Abril", "Mayo", "Junio", "Julio", "Agosto", "Setiembre", "Octubre", "Noviembre", "Diciembre"};
+        String [] months = {"", "Enero", "Febrero", "Marzo", "Abril", "Mayo", "Junio", "Julio", "Agosto", "Setiembre", "Octubre", "Noviembre", "Diciembre"};
         return months;
     }
 }
