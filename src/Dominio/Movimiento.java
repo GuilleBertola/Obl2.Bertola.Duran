@@ -61,7 +61,7 @@ public class Movimiento implements Comparable<Movimiento>, Serializable{
     
     public int mesANum(String month){
         int pos = -1;
-        for (int i = 1; i < meses.length && pos > 0; i++) {
+        for (int i = 1; i < meses.length; i++) {
             if(month.equals(meses[i])){
                 pos = i;
             }

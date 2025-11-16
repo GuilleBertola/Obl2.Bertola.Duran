@@ -35,6 +35,11 @@ public class HacerMovimiento extends javax.swing.JFrame implements Observer{
         getContentPane().setLayout(null);
 
         combo.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
+        combo.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                comboActionPerformed(evt);
+            }
+        });
         getContentPane().add(combo);
         combo.setBounds(60, 40, 72, 22);
 
@@ -126,6 +131,10 @@ public class HacerMovimiento extends javax.swing.JFrame implements Observer{
     private void origenCambiado(javax.swing.event.ListSelectionEvent evt) {//GEN-FIRST:event_origenCambiado
         cargarListaEmpleados();
     }//GEN-LAST:event_origenCambiado
+
+    private void comboActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_comboActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_comboActionPerformed
 
     public void cargarCombo(){
         combo.removeAllItems();
