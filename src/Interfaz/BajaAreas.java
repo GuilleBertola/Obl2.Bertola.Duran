@@ -46,7 +46,7 @@ public class BajaAreas extends javax.swing.JFrame implements Observer {
 
         SinE.setText("Areas sin empleados:");
         getContentPane().add(SinE);
-        SinE.setBounds(35, 6, 112, 36);
+        SinE.setBounds(35, 6, 140, 36);
 
         botonEliminar.setText("Eliminar");
         botonEliminar.addActionListener(new java.awt.event.ActionListener() {
