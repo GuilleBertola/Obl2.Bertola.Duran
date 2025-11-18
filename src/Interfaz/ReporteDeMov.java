@@ -149,7 +149,7 @@ public ReporteDeMov(Sistema sis) {
         getContentPane().add(jScrollPane5);
         jScrollPane5.setBounds(537, 290, 70, 110);
 
-        setBounds(0, 0, 704, 428);
+        setBounds(0, 0, 704, 456);
     }// </editor-fold>//GEN-END:initComponents
 
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed

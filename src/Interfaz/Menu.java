@@ -151,6 +151,11 @@ public class Menu extends javax.swing.JFrame {
         RepoInt.setText("Reportes");
 
         jMenuItem9.setText("Reporte inteligente");
+        jMenuItem9.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jMenuItem9ActionPerformed(evt);
+            }
+        });
         RepoInt.add(jMenuItem9);
 
         RepoEst.setText("Reporte de estado de áreas");
@@ -239,6 +244,11 @@ public class Menu extends javax.swing.JFrame {
         ReporteDeMov vent= new ReporteDeMov(modelo);
         vent.setVisible(true);
     }//GEN-LAST:event_RepoModActionPerformed
+
+    private void jMenuItem9ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItem9ActionPerformed
+        ReporteInteligente vent= new ReporteInteligente(modelo);
+        vent.setVisible(true);
+    }//GEN-LAST:event_jMenuItem9ActionPerformed
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
