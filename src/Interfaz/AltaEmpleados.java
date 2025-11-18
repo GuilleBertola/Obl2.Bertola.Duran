@@ -149,7 +149,7 @@ public class AltaEmpleados extends javax.swing.JFrame implements Observer{
         getContentPane().add(jLabel8);
         jLabel8.setBounds(80, 50, 70, 16);
 
-        setBounds(0, 0, 760, 515);
+        setBounds(0, 0, 748, 508);
     }// </editor-fold>//GEN-END:initComponents
 
     private void btnCerrarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnCerrarActionPerformed
