@@ -4,6 +4,13 @@ import Dominio.*;
 import java.util.ArrayList;
 import javax.swing.*;
 import javax.swing.table.DefaultTableModel;
+import java.io.File;
+import java.io.FileWriter;
+import java.io.PrintWriter;
+import javax.swing.JFileChooser;
+import javax.swing.JOptionPane;
+
+
 
 public class ReporteDeMov extends javax.swing.JFrame {
     DefaultTableModel mt = new DefaultTableModel();
@@ -14,7 +21,6 @@ public ReporteDeMov(Sistema sis) {
     mt = new DefaultTableModel();
     mt.setColumnIdentifiers(new Object[]{"Movimientos", "Mes", "Origen", "Destino", "Empleado"});
     JTable1.setModel(mt);
-    cargarListaOrigen();
     cargarListaDestino();
     cargarListaMes();
     cargarListaEmpleados();
@@ -39,6 +45,7 @@ public ReporteDeMov(Sistema sis) {
         btnEmp = new javax.swing.JButton();
         jScrollPane5 = new javax.swing.JScrollPane();
         listaEmp = new javax.swing.JList();
+        btnExportar = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
         getContentPane().setLayout(null);
@@ -59,14 +66,14 @@ public ReporteDeMov(Sistema sis) {
         getContentPane().add(jScrollPane1);
         jScrollPane1.setBounds(0, 0, 400, 180);
 
-        jButton1.setText("Boton1");
+        jButton1.setText("Mostrar todos los movimientos");
         jButton1.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jButton1ActionPerformed(evt);
             }
         });
         getContentPane().add(jButton1);
-        jButton1.setBounds(230, 200, 75, 23);
+        jButton1.setBounds(10, 200, 210, 23);
 
         btnOrigen.setText("Filtrar por area de origen:");
         btnOrigen.addActionListener(new java.awt.event.ActionListener() {
@@ -99,7 +106,7 @@ public ReporteDeMov(Sistema sis) {
             }
         });
         getContentPane().add(btnDestino);
-        btnDestino.setBounds(250, 260, 170, 23);
+        btnDestino.setBounds(250, 260, 180, 23);
 
         listaDestino.setModel(new javax.swing.AbstractListModel() {
             String[] strings = { "Item 1", "Item 2", "Item 3", "Item 4", "Item 5" };
@@ -109,7 +116,7 @@ public ReporteDeMov(Sistema sis) {
         jScrollPane3.setViewportView(listaDestino);
 
         getContentPane().add(jScrollPane3);
-        jScrollPane3.setBounds(280, 290, 90, 110);
+        jScrollPane3.setBounds(300, 290, 90, 110);
 
         btnMeses.setText("Filtrar por mes");
         btnMeses.addActionListener(new java.awt.event.ActionListener() {
@@ -149,6 +156,15 @@ public ReporteDeMov(Sistema sis) {
         getContentPane().add(jScrollPane5);
         jScrollPane5.setBounds(537, 290, 70, 110);
 
+        btnExportar.setText("Exportar");
+        btnExportar.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnExportarActionPerformed(evt);
+            }
+        });
+        getContentPane().add(btnExportar);
+        btnExportar.setBounds(430, 210, 75, 23);
+
         setBounds(0, 0, 704, 428);
     }// </editor-fold>//GEN-END:initComponents
 
@@ -157,7 +173,7 @@ public ReporteDeMov(Sistema sis) {
         mt.setRowCount(0);
         for(int i =0;i<modelo.getListaMovimientos().size();i++){
             
-            Movimiento o=modelo.getListaMovimientos().get(i);
+            Movimiento o=modelo.getListaMovimientos().get(i); 
             mt.addRow(new Object[]{cant,o.getMes(),o.getAreaOrigen(),o.getAreaDestino(),o.getEmpleado().getNombre()});
 
             cant++;
@@ -221,20 +237,17 @@ public ReporteDeMov(Sistema sis) {
         }
     }//GEN-LAST:event_btnEmpActionPerformed
 
-    public void cargarListaOrigen(){
-        Area [] a= new Area[modelo.getListaMovimientos().size()];
-        for (int i = 0; i < modelo.getListaMovimientos().size(); i++) {
-            a[i] = modelo.getListaMovimientos().get(i).getAreaOrigen();
-        }
-        listaOrigen.setListData(a);        
-    }
+    private void btnExportarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnExportarActionPerformed
+        exportar();
+    }//GEN-LAST:event_btnExportarActionPerformed
     
     public void cargarListaDestino(){
-        Area [] a= new Area[modelo.getListaMovimientos().size()];
-        for (int i = 0; i < modelo.getListaMovimientos().size(); i++) {
-            a[i] = modelo.getListaMovimientos().get(i).getAreaDestino();
+        String [] a= new String[modelo.getListaAreas().size()];
+        for (int i = 0; i < modelo.getListaAreas().size(); i++) {
+            a[i] = modelo.getListaAreas().get(i).getNombre();
         }
-        listaDestino.setListData(a);        
+        listaDestino.setListData(a);
+        listaOrigen.setListData(a);        
     }
     
     public void cargarListaMes(){
@@ -243,17 +256,61 @@ public ReporteDeMov(Sistema sis) {
     }
     
     public void cargarListaEmpleados(){
-        Empleado [] e= new Empleado[modelo.getListaMovimientos().size()];
-        for (int i = 0; i < modelo.getListaMovimientos().size(); i++) {
-            e[i] = modelo.getListaMovimientos().get(i).getEmpleado();
+        String [] e= new String[modelo.getListaEmpleados().size()];
+        for (int i = 0; i < modelo.getListaEmpleados().size(); i++) {
+            e[i] = modelo.getListaEmpleados().get(i).getNombre();
         }
         listaEmp.setListData(e);        
     }
+    
+    public void exportarCSV(JTable tabla, File archivo) {
+        try (PrintWriter pw = new PrintWriter(new FileWriter(archivo))) {
+
+            for (int i = 0; i < tabla.getColumnCount(); i++) {
+                pw.print(String.valueOf(tabla.getColumnName(i)));
+                if (i < tabla.getColumnCount() - 1) pw.print(",");
+            }
+            pw.println();
+
+
+            for (int j = 0; j < tabla.getRowCount(); j++) {
+                for (int k = 0; k< tabla.getColumnCount(); k++) {
+
+                    String valor = String.valueOf(tabla.getValueAt(j, k));
+                    pw.print(valor);
+
+                    if (k < tabla.getColumnCount() - 1) pw.print(",");
+                }
+                pw.println();
+            }
+
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+    }
+
+    
+    public void exportar() {
+        JFileChooser chooser = new JFileChooser();
+        chooser.setDialogTitle("Guardar como CSV");
+        chooser.setSelectedFile(new File("reporte_movimientos.csv"));
+
+        int seleccion = chooser.showSaveDialog(this);
+
+        if (seleccion == JFileChooser.APPROVE_OPTION) {
+            File archivo = chooser.getSelectedFile();
+            exportarCSV(JTable1,archivo);
+        }
+    }
+    
+    
+
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JTable JTable1;
     private javax.swing.JButton btnDestino;
     private javax.swing.JButton btnEmp;
+    private javax.swing.JButton btnExportar;
     private javax.swing.JButton btnMeses;
     private javax.swing.JButton btnOrigen;
     private javax.swing.JButton jButton1;
