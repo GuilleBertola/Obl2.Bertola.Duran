@@ -3,6 +3,7 @@ package Interfaz;
 import Dominio.*;
 import java.util.*;
 import javax.swing.ImageIcon;
+import javax.swing.JOptionPane;
 //import javax.swing.*;
 
 
@@ -141,16 +142,21 @@ public class ReporteInteligente extends javax.swing.JFrame implements Observer{
     public String pedirRespuesta(Area origen, Area destino, Empleado empleado){
         String res = "";
         HacerReporteIA reporte = new HacerReporteIA();
-        String prompt = reporte.construirPrompt(origen, destino, empleado);
-        try{
-            res = reporte.obtenerReporteGemini(prompt);
+        if(!reporte.errorDeApi()){
+            String prompt = reporte.construirPrompt(origen, destino, empleado);
+            try{
+                res = reporte.obtenerReporteGemini(prompt);
+            }
+            catch(RuntimeException e){
+                res = "ERROR";
+            }
+            catch(Exception e){
+                System.out.println(e);
+            }
+        }else{
+            res = "Error al leer la API KEY \n asegurese que este gurdada en un variable de entorno llamada ERP_API_KEY";
         }
-        catch(RuntimeException e){
-            res = "ERROR";
-        }
-        catch(Exception e){
-            System.out.println(e);
-        }
+        
         return res;
     }
     

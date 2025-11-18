@@ -14,15 +14,21 @@ import java.io.File;
 public class HacerReporteIA {
 
     private String API_KEY;
+    private boolean errorDeApi;
 
     public HacerReporteIA() {
         // Leer la variable de entorno
         API_KEY = System.getenv("ERP_API_KEY");
         
+        errorDeApi = false;
+        
         if (API_KEY == null || API_KEY.trim().isEmpty()) {
-            // Manejo de error si la clave no se encuentra
-            throw new IllegalStateException("La variable de entorno ERP_API_KEY no está configurada.");
+            errorDeApi = true;
         }
+    }
+    
+    public boolean errorDeApi(){
+        return this.errorDeApi;
     }
     
     public String construirPrompt(Area origen, Area destino, Empleado empleado) {
