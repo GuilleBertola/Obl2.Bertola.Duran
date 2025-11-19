@@ -29,7 +29,9 @@ public class Menu extends javax.swing.JFrame {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
-        jLabel2 = new javax.swing.JLabel();
+        jScrollPane1 = new javax.swing.JScrollPane();
+        jTable1 = new javax.swing.JTable();
+        jLabel1 = new javax.swing.JLabel();
         jMenuBar1 = new javax.swing.JMenuBar();
         areas = new javax.swing.JMenu();
         AreaAlt = new javax.swing.JMenuItem();
@@ -47,6 +49,19 @@ public class Menu extends javax.swing.JFrame {
         RepoEst = new javax.swing.JMenuItem();
         RepoMod = new javax.swing.JMenuItem();
 
+        jTable1.setModel(new javax.swing.table.DefaultTableModel(
+            new Object [][] {
+                {null, null, null, null},
+                {null, null, null, null},
+                {null, null, null, null},
+                {null, null, null, null}
+            },
+            new String [] {
+                "Title 1", "Title 2", "Title 3", "Title 4"
+            }
+        ));
+        jScrollPane1.setViewportView(jTable1);
+
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         addWindowListener(new java.awt.event.WindowAdapter() {
             public void windowClosing(java.awt.event.WindowEvent evt) {
@@ -60,12 +75,11 @@ public class Menu extends javax.swing.JFrame {
         });
         getContentPane().setLayout(null);
 
-        jLabel2.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Interfaz/guillefoto.jpg"))); // NOI18N
-        jLabel2.setText("jLabel2");
-        jLabel2.setMaximumSize(new java.awt.Dimension(381, 640));
-        jLabel2.setMinimumSize(new java.awt.Dimension(381, 640));
-        getContentPane().add(jLabel2);
-        jLabel2.setBounds(-150, 0, 650, 600);
+        jLabel1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/Logo1.png"))); // NOI18N
+        jLabel1.setMaximumSize(new java.awt.Dimension(20, 8));
+        jLabel1.setMinimumSize(new java.awt.Dimension(20, 8));
+        getContentPane().add(jLabel1);
+        jLabel1.setBounds(-40, -60, 1010, 880);
 
         areas.setText("Áreas");
         areas.addActionListener(new java.awt.event.ActionListener() {
@@ -178,7 +192,7 @@ public class Menu extends javax.swing.JFrame {
 
         setJMenuBar(jMenuBar1);
 
-        setBounds(0, 0, 511, 358);
+        setBounds(0, 0, 726, 819);
     }// </editor-fold>//GEN-END:initComponents
 
     private void areasActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_areasActionPerformed
@@ -265,10 +279,12 @@ public class Menu extends javax.swing.JFrame {
     private javax.swing.JMenuItem RepoMod;
     private javax.swing.JMenuItem altaEmpleados;
     private javax.swing.JMenu areas;
-    private javax.swing.JLabel jLabel2;
+    private javax.swing.JLabel jLabel1;
     private javax.swing.JMenuBar jMenuBar1;
     private javax.swing.JMenuItem jMenuItem5;
     private javax.swing.JMenuItem jMenuItem9;
+    private javax.swing.JScrollPane jScrollPane1;
+    private javax.swing.JTable jTable1;
     // End of variables declaration//GEN-END:variables
     private Sistema modelo;
 }

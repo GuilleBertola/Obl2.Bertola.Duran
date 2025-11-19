@@ -23,7 +23,7 @@ public class BajaManagers extends javax.swing.JFrame implements Observer {
         jLabel2 = new javax.swing.JLabel();
         btnEliminar = new javax.swing.JButton();
 
-        setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+        setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
         getContentPane().setLayout(null);
 
         ListaManSinE.setModel(new javax.swing.AbstractListModel() {

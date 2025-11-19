@@ -9,8 +9,10 @@ public class Bienvenida extends javax.swing.JFrame {
 
     public Bienvenida(Sistema sis) {
         initComponents();
+        System.out.println(getClass().getResource("/img/Logo.png"));
         modelo = sis;
         cerrarConTimer();
+
     }
     
     public void cerrarConTimer(){
@@ -31,17 +33,11 @@ public class Bienvenida extends javax.swing.JFrame {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
-        logo = new javax.swing.JLabel();
         jLabel1 = new javax.swing.JLabel();
         jLabel2 = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
         getContentPane().setLayout(null);
-
-        logo.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Interfaz/guillefoto.jpg"))); // NOI18N
-        logo.setText("jLabel1");
-        getContentPane().add(logo);
-        logo.setBounds(40, 60, 90, 70);
 
         jLabel1.setText("Guillermo Bértola 303665");
         getContentPane().add(jLabel1);
@@ -51,7 +47,7 @@ public class Bienvenida extends javax.swing.JFrame {
         getContentPane().add(jLabel2);
         jLabel2.setBounds(210, 110, 180, 16);
 
-        setBounds(0, 0, 454, 210);
+        setBounds(0, 0, 454, 212);
     }// </editor-fold>//GEN-END:initComponents
 
     
@@ -59,7 +55,6 @@ public class Bienvenida extends javax.swing.JFrame {
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
-    private javax.swing.JLabel logo;
     // End of variables declaration//GEN-END:variables
     private Sistema modelo;
 }
