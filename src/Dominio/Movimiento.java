@@ -1,3 +1,4 @@
+//Guillermo Bértola 303665 y Santiago Durán 351471
 package Dominio;
 
 import java.io.Serializable;

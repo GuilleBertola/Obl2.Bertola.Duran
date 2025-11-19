@@ -1,3 +1,4 @@
+//Guillermo Bértola 303665 y Santiago Durán 351471
 package Interfaz;
 
 import Dominio.*;
@@ -6,13 +7,11 @@ import java.io.IOException;
 import java.io.ObjectInputStream;
 public class ElegirSistema extends javax.swing.JFrame {
 
-    
     public ElegirSistema(Sistema sis) {
         initComponents();
         modelo = sis;
     }
 
-    
     @SuppressWarnings("unchecked")
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
@@ -21,7 +20,7 @@ public class ElegirSistema extends javax.swing.JFrame {
         btnSisNuevo = new javax.swing.JButton();
         btnSisGuardado = new javax.swing.JButton();
 
-        setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
+        setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setTitle("Comenzar con...");
         setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
         getContentPane().setLayout(null);
@@ -86,6 +85,7 @@ public class ElegirSistema extends javax.swing.JFrame {
     public void abrirMenu(){
         Menu vent = new Menu(modelo);
         vent.setVisible(true);
+        vent.setLocationRelativeTo(null);
         dispose();
     }
     

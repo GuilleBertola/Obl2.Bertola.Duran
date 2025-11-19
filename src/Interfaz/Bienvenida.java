@@ -1,11 +1,10 @@
+//Guillermo Bértola 303665 y Santiago Durán 351471
 package Interfaz;
 
 import java.util.*;
 import Dominio.*;
 
 public class Bienvenida extends javax.swing.JFrame {
-    
-    private static final java.util.logging.Logger logger = java.util.logging.Logger.getLogger(Bienvenida.class.getName());
 
     public Bienvenida(Sistema sis) {
         initComponents();
@@ -38,7 +37,6 @@ public class Bienvenida extends javax.swing.JFrame {
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
         getContentPane().setLayout(null);
 
-        logo.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Interfaz/guillefoto.jpg"))); // NOI18N
         logo.setText("jLabel1");
         getContentPane().add(logo);
         logo.setBounds(40, 60, 90, 70);

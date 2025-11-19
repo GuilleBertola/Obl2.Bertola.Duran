@@ -1,3 +1,4 @@
+//Guillermo Bértola 303665 y Santiago Durán 351471
 package Interfaz;
 
 import Dominio.*;
@@ -25,6 +26,12 @@ public class Menu extends javax.swing.JFrame {
     this.setFocusable(true);
     }
     
+    public void keyPressed(java.awt.event.KeyEvent e) {
+            if (e.getKeyCode() == java.awt.event.KeyEvent.VK_F1) {
+                JOptionPane.showMessageDialog(null, "Guillermo Bértola: 303665 y Santiago Durán: 351471");
+            }
+        }
+    
     @SuppressWarnings("unchecked")
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
@@ -43,7 +50,7 @@ public class Menu extends javax.swing.JFrame {
         EmpleAlt = new javax.swing.JMenu();
         altaEmpleados = new javax.swing.JMenuItem();
         RepoInt = new javax.swing.JMenu();
-        jMenuItem9 = new javax.swing.JMenuItem();
+        RepoInteligente = new javax.swing.JMenuItem();
         RepoEst = new javax.swing.JMenuItem();
         RepoMod = new javax.swing.JMenuItem();
 
@@ -60,7 +67,6 @@ public class Menu extends javax.swing.JFrame {
         });
         getContentPane().setLayout(null);
 
-        jLabel2.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Interfaz/guillefoto.jpg"))); // NOI18N
         jLabel2.setText("jLabel2");
         jLabel2.setMaximumSize(new java.awt.Dimension(381, 640));
         jLabel2.setMinimumSize(new java.awt.Dimension(381, 640));
@@ -150,13 +156,13 @@ public class Menu extends javax.swing.JFrame {
 
         RepoInt.setText("Reportes");
 
-        jMenuItem9.setText("Reporte inteligente");
-        jMenuItem9.addActionListener(new java.awt.event.ActionListener() {
+        RepoInteligente.setText("Reporte inteligente");
+        RepoInteligente.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jMenuItem9ActionPerformed(evt);
+                RepoInteligenteActionPerformed(evt);
             }
         });
-        RepoInt.add(jMenuItem9);
+        RepoInt.add(RepoInteligente);
 
         RepoEst.setText("Reporte de estado de áreas");
         RepoEst.addActionListener(new java.awt.event.ActionListener() {
@@ -188,26 +194,31 @@ public class Menu extends javax.swing.JFrame {
     private void AreaModActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_AreaModActionPerformed
         ModificacionAreas vent = new ModificacionAreas(modelo);
         vent.setVisible(true);
+        vent.setLocationRelativeTo(null);
     }//GEN-LAST:event_AreaModActionPerformed
 
     private void altaEmpleadosActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_altaEmpleadosActionPerformed
         AltaEmpleados vent = new AltaEmpleados(modelo);
         vent.setVisible(true);
+        vent.setLocationRelativeTo(null);
     }//GEN-LAST:event_altaEmpleadosActionPerformed
 
     private void AreaAltActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_AreaAltActionPerformed
         AltaAreas vent = new AltaAreas(modelo);
         vent.setVisible(true);
+        vent.setLocationRelativeTo(null);
     }//GEN-LAST:event_AreaAltActionPerformed
 
     private void jMenuItem5ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItem5ActionPerformed
         AltaManagers vent = new AltaManagers(modelo);
         vent.setVisible(true);
+        vent.setLocationRelativeTo(null);
     }//GEN-LAST:event_jMenuItem5ActionPerformed
 
     private void AreaMovActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_AreaMovActionPerformed
         HacerMovimiento vent = new HacerMovimiento(modelo);
         vent.setVisible(true);
+        vent.setLocationRelativeTo(null);
     }//GEN-LAST:event_AreaMovActionPerformed
 
     private void antesDeCerrar(java.awt.event.WindowEvent evt) {//GEN-FIRST:event_antesDeCerrar
@@ -221,34 +232,39 @@ public class Menu extends javax.swing.JFrame {
     private void AreaBajActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_AreaBajActionPerformed
         BajaAreas vent= new BajaAreas(modelo);
         vent.setVisible(true);
+        vent.setLocationRelativeTo(null);
     }//GEN-LAST:event_AreaBajActionPerformed
 
     private void ManBajActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_ManBajActionPerformed
         BajaManagers vent= new BajaManagers(modelo);
         vent.setVisible(true);
+        vent.setLocationRelativeTo(null);
     }//GEN-LAST:event_ManBajActionPerformed
-
 
     private void ManModActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_ManModActionPerformed
         ModificacionManagers vent= new ModificacionManagers(modelo);
         vent.setVisible(true);
+        vent.setLocationRelativeTo(null);
     }//GEN-LAST:event_ManModActionPerformed
 
     private void RepoEstActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_RepoEstActionPerformed
         ReporteEstado vent= new ReporteEstado(modelo);
         vent.setVisible(true);
+        vent.setLocationRelativeTo(null);
     }//GEN-LAST:event_RepoEstActionPerformed
  
 
     private void RepoModActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_RepoModActionPerformed
         ReporteDeMov vent= new ReporteDeMov(modelo);
         vent.setVisible(true);
+        vent.setLocationRelativeTo(null);
     }//GEN-LAST:event_RepoModActionPerformed
 
-    private void jMenuItem9ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItem9ActionPerformed
+    private void RepoInteligenteActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_RepoInteligenteActionPerformed
         ReporteInteligente vent= new ReporteInteligente(modelo);
         vent.setVisible(true);
-    }//GEN-LAST:event_jMenuItem9ActionPerformed
+        vent.setLocationRelativeTo(null);
+    }//GEN-LAST:event_RepoInteligenteActionPerformed
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
@@ -262,13 +278,13 @@ public class Menu extends javax.swing.JFrame {
     private javax.swing.JMenuItem ManMod;
     private javax.swing.JMenuItem RepoEst;
     private javax.swing.JMenu RepoInt;
+    private javax.swing.JMenuItem RepoInteligente;
     private javax.swing.JMenuItem RepoMod;
     private javax.swing.JMenuItem altaEmpleados;
     private javax.swing.JMenu areas;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JMenuBar jMenuBar1;
     private javax.swing.JMenuItem jMenuItem5;
-    private javax.swing.JMenuItem jMenuItem9;
     // End of variables declaration//GEN-END:variables
     private Sistema modelo;
 }

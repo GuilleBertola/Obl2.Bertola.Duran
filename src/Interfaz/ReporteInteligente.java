@@ -1,16 +1,17 @@
+//Guillermo Bértola 303665 y Santiago Durán 351471
 package Interfaz;
 
 import Dominio.*;
 import java.util.*;
+import java.util.concurrent.ExecutionException;
 import javax.swing.ImageIcon;
 import javax.swing.JOptionPane;
+import javax.swing.SwingWorker;
 //import javax.swing.*;
 
 
 public class ReporteInteligente extends javax.swing.JFrame implements Observer{
     
-    private static final java.util.logging.Logger logger = java.util.logging.Logger.getLogger(ReporteInteligente.class.getName());
-
     public ReporteInteligente(Sistema sis) {
         initComponents();
         modelo = sis;
@@ -92,7 +93,7 @@ public class ReporteInteligente extends javax.swing.JFrame implements Observer{
         getContentPane().add(jScrollPane4);
         jScrollPane4.setBounds(380, 110, 330, 300);
         getContentPane().add(img);
-        img.setBounds(120, 280, 140, 140);
+        img.setBounds(400, 20, 70, 70);
 
         setBounds(0, 0, 760, 476);
     }// </editor-fold>//GEN-END:initComponents
@@ -102,30 +103,90 @@ public class ReporteInteligente extends javax.swing.JFrame implements Observer{
     }//GEN-LAST:event_btnCerrarActionPerformed
 
     private void btnAceptarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnAceptarActionPerformed
-        img.setIcon(new ImageIcon(getClass().getResource("/imagenes/Reloj.gif")));//Las imagenes son muuy grandes
-        img.updateUI();//No carga la imagen hasta despues del reporte
         Area origen = (Area)listaOrigen.getSelectedValue();
         Area destino = (Area)listaDestinos.getSelectedValue();
         Empleado empleado = (Empleado)listaEmpleados.getSelectedValue();
-        String respuesta = "Esperando respuesta";
-        int cant = 0;
-        while(respuesta.length() < 25 && cant <= 3){ //Asumo que el reporte va a tener mas de 25 caracteres de largo
-            respuesta = pedirRespuesta(origen, destino, empleado);
-        }
-        if(respuesta.equals("ERROR")){
-            txtRespuesta.setText("El modelo no pudo responder, vuelva a probar");
-            img.setIcon(new ImageIcon(getClass().getResource("/imagenes/Cruz.png")));
-        }else{
-            txtRespuesta.setText(respuesta);
-            img.setIcon(new ImageIcon(getClass().getResource("/imagenes/check.png")));
-        }
-        
 
+        img.setIcon(new ImageIcon(getClass().getResource("/imagenes/reloj.gif")));
+        txtRespuesta.setText("Generando reporte.");
+        
+        hacerDeFondo worker = new hacerDeFondo(origen, destino, empleado);
+        worker.execute();
     }//GEN-LAST:event_btnAceptarActionPerformed
 
     private void origenCambiado(javax.swing.event.ListSelectionEvent evt) {//GEN-FIRST:event_origenCambiado
         cargarListaEmpleados();
     }//GEN-LAST:event_origenCambiado
+    
+    private class hacerDeFondo extends SwingWorker<String, Void> {
+
+        private Area origen;
+        private Area destino;
+        private Empleado empleado;
+
+        public hacerDeFondo(Area origen, Area destino, Empleado empleado) {
+            this.origen = origen;
+            this.destino = destino;
+            this.empleado = empleado;
+        }
+
+        // ********* 1. Tarea Pesada (doInBackground): FUERA del EDT *********
+        @Override
+        protected String doInBackground() throws Exception {
+            String respuesta = "Esperando respuesta";
+            int cant = 0;
+
+            while (respuesta.length() < 25 && cant <= 3) { //Asumo que el reporte va a ser de mas de 25 caracteres y tomo eso como señal de que lo hizo correctamente
+                cant++;
+                respuesta = pedirRespuesta(origen, destino, empleado);
+            }
+            return respuesta;
+        }
+
+        // Método que replica tu lógica de consulta (pedirRespuesta)
+        public String pedirRespuesta(Area origen, Area destino, Empleado empleado){
+            String res = "";
+            HacerReporteIA reporte = new HacerReporteIA();
+            if(!reporte.errorDeApi()){
+                String prompt = reporte.construirPrompt(origen, destino, empleado);
+                try{
+                    res = reporte.obtenerReporteGemini(prompt);
+                }
+                catch(RuntimeException e){
+                    res = "ERROR";
+                }
+                catch(Exception e){
+                    System.out.println(e);
+                }
+            }else{
+                res = "Error al leer la API KEY";
+            }
+
+            return res;
+        }
+
+        // ********* 2. Finalización (done): DE VUELTA en el EDT *********
+        @Override
+        protected void done() {
+            try {
+                // Obtener el resultado de doInBackground
+                String respuesta = get(); 
+
+                if (respuesta.equals("ERROR") || respuesta.equals("Error al leer la API KEY")) {
+                    txtRespuesta.setText("El modelo no pudo responder, vuelva a probar");
+                    img.setIcon(new ImageIcon(getClass().getResource("/imagenes/Cruz.png")));
+                } else {
+                    txtRespuesta.setText(respuesta);
+                    img.setIcon(new ImageIcon(getClass().getResource("/imagenes/check.png")));
+                }
+
+            } catch (InterruptedException | ExecutionException e) {
+                // Manejar errores de ejecución del Worker (si fue cancelado o falló)
+                txtRespuesta.setText("Error fatal en el proceso: " + e.getMessage());
+                img.setIcon(new ImageIcon(getClass().getResource("/imagenes/cruz.png")));
+            }
+        }
+    }
     
     public void cargarAlgunasListas(){
         listaOrigen.setListData(modelo.getListaAreas().toArray());
@@ -137,27 +198,6 @@ public class ReporteInteligente extends javax.swing.JFrame implements Observer{
         if(areaSelec != null){
             listaEmpleados.setListData(modelo.listarEmpleadosArea(areaSelec).toArray());
         }
-    }
-    
-    public String pedirRespuesta(Area origen, Area destino, Empleado empleado){
-        String res = "";
-        HacerReporteIA reporte = new HacerReporteIA();
-        if(!reporte.errorDeApi()){
-            String prompt = reporte.construirPrompt(origen, destino, empleado);
-            try{
-                res = reporte.obtenerReporteGemini(prompt);
-            }
-            catch(RuntimeException e){
-                res = "ERROR";
-            }
-            catch(Exception e){
-                System.out.println(e);
-            }
-        }else{
-            res = "Error al leer la API KEY \n asegurese que este gurdada en un variable de entorno llamada ERP_API_KEY";
-        }
-        
-        return res;
     }
     
     public void cargarListas(){

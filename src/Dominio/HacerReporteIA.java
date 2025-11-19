@@ -1,3 +1,4 @@
+//Guillermo Bértola 303665 y Santiago Durán 351471
 package Dominio;
 
 import com.google.gson.Gson;
@@ -17,7 +18,6 @@ public class HacerReporteIA {
     private boolean errorDeApi;
 
     public HacerReporteIA() {
-        // Leer la variable de entorno
         API_KEY = System.getenv("ERP_API_KEY");
         
         errorDeApi = false;
@@ -32,29 +32,17 @@ public class HacerReporteIA {
     }
     
     public String construirPrompt(Area origen, Area destino, Empleado empleado) {
-        // Detalles del Área de Origen
-        String detallesOrigen = "Área de Origen: " + origen.getNombre() + 
-                                ". Descripción: " + origen.getDescripcion() + ".";
-
-        // Detalles del Área de Destino
-        String detallesDestino = "Área de Destino: " + destino.getNombre() + 
-                                 ". Descripción: " + destino.getDescripcion() + ".";
-
-        // CV del Empleado (asumiendo que tienes un método para obtenerlo)
         ArchivoLectura arch = new ArchivoLectura(System.getProperty("user.dir")+ File.separator + "cvs" + "/CV" + empleado.getCedula() + ".txt");
         String cvEmpleado = "";
         while(arch.hayMasLineas()){
             cvEmpleado += arch.linea();
         }
         arch.cerrar();
-         
-
         String prompt = "Analizaras deciciones tomadas dentro de una empresa. Debes dar una opinion sobre el traslado de area de un empleado. Se te dara, la descripcion del area de origen, la descripcion del area destino y un resumen del curriculum del empleado. Formula una opinion sobre si es buena idea el cambio de area respecto a las aptitudes del empleado y donde se puede adaptar mejor, dando pros y contras"+
                         "Datos areas: \n" +
-                        "Area de origen: " + detallesOrigen + "\n" +
-                        "Area de destino: " + detallesDestino + "\n" +
+                        "Area de origen: " + origen.getNombre() + origen.getDescripcion() + "\n" +
+                        "Area de destino: " + destino.getNombre() + destino.getDescripcion() + "\n" +
                         "Curriculum: " + cvEmpleado;
-
         return prompt;
     }
     
@@ -86,7 +74,6 @@ public class HacerReporteIA {
 
         // Opcional: añade el modelo si quieres especificarlo explícitamente, 
         // aunque la URL ya lo tiene implícito.
-        // jsonRequest.addProperty("model", "gemini-2.5-flash"); 
 
         String requestBody = jsonRequest.toString();
 
@@ -95,7 +82,6 @@ public class HacerReporteIA {
         jsonRequest.getAsJsonArray("contents").add(content);
 
         
-
         // 2. Crear la petición HTTP
         HttpClient client = HttpClient.newHttpClient();
         HttpRequest request = HttpRequest.newBuilder()

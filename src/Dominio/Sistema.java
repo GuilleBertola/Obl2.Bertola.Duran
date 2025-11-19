@@ -1,3 +1,4 @@
+//Guillermo Bértola 303665 y Santiago Durán 351471
 package Dominio;
 
 import java.util.*;
@@ -82,7 +83,6 @@ public class Sistema extends Observable implements Serializable {
     }
     
      public Sistema(){
-        
         listaAreas = new ArrayList<>();
         listaManagers = new ArrayList<>();
         listaEmpleados = new ArrayList<>();

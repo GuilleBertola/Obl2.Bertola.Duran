@@ -1,7 +1,8 @@
+//Guillermo Bértola 303665 y Santiago Durán 351471
 package Interfaz;
 
 import Dominio.*;
-import java.util.ArrayList;
+import java.util.*;
 import javax.swing.*;
 import javax.swing.table.DefaultTableModel;
 import java.io.File;
@@ -12,7 +13,7 @@ import javax.swing.JOptionPane;
 
 
 
-public class ReporteDeMov extends javax.swing.JFrame {
+public class ReporteDeMov extends javax.swing.JFrame implements Observer{
     DefaultTableModel mt = new DefaultTableModel();
 
 public ReporteDeMov(Sistema sis) {
@@ -21,9 +22,8 @@ public ReporteDeMov(Sistema sis) {
     mt = new DefaultTableModel();
     mt.setColumnIdentifiers(new Object[]{"Movimientos", "Mes", "Origen", "Destino", "Empleado"});
     JTable1.setModel(mt);
-    cargarListaDestino();
-    cargarListaMes();
-    cargarListaEmpleados();
+    cargarListas();
+    modelo.addObserver(this);
 }
 
     @SuppressWarnings("unchecked")
@@ -241,6 +241,12 @@ public ReporteDeMov(Sistema sis) {
         exportar();
     }//GEN-LAST:event_btnExportarActionPerformed
     
+    public void cargarListas(){
+        cargarListaDestino();
+        cargarListaMes();
+        cargarListaEmpleados();
+    }
+    
     public void cargarListaDestino(){
         String [] a= new String[modelo.getListaAreas().size()];
         for (int i = 0; i < modelo.getListaAreas().size(); i++) {
@@ -289,6 +295,10 @@ public ReporteDeMov(Sistema sis) {
         }
     }
 
+    @Override
+    public void update(Observable o, Object arg) {
+        cargarListas();
+    }
     
     public void exportar() {
         JFileChooser chooser = new JFileChooser();

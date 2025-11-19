@@ -1,11 +1,10 @@
+//Guillermo Bértola 303665 y Santiago Durán 351471
 package Interfaz;
 
 import Dominio.*;
 import javax.swing.*;
 
 public class AltaAreas extends javax.swing.JFrame {
-    
-    private static final java.util.logging.Logger logger = java.util.logging.Logger.getLogger(AltaAreas.class.getName());
 
     public AltaAreas(Sistema sis) {
         modelo = sis;

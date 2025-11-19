@@ -1,7 +1,7 @@
+//Guillermo Bértola 303665 y Santiago Durán 351471
 package Dominio;
 
 import java.io.Serializable;
-import java.util.Objects;
 
 public class Area implements Comparable<Area>, Serializable{
     private String nombre;

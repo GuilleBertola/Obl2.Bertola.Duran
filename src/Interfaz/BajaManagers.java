@@ -1,7 +1,8 @@
+//Guillermo Bértola 303665 y Santiago Durán 351471
 package Interfaz;
+
 import Dominio.*;
-import java.util.Observable;
-import java.util.Observer;
+import java.util.*;
 
 public class BajaManagers extends javax.swing.JFrame implements Observer {
 
