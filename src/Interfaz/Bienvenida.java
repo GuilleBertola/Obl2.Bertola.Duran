@@ -1,0 +1,60 @@
+package Interfaz;
+
+import java.util.*;
+import Dominio.*;
+
+public class Bienvenida extends javax.swing.JFrame {
+    
+    private static final java.util.logging.Logger logger = java.util.logging.Logger.getLogger(Bienvenida.class.getName());
+
+    public Bienvenida(Sistema sis) {
+        initComponents();
+        System.out.println(getClass().getResource("/img/Logo.png"));
+        modelo = sis;
+        cerrarConTimer();
+
+    }
+    
+    public void cerrarConTimer(){
+        Timer reloj = new Timer();
+        TimerTask cerrar = new TimerTask(){
+           @Override
+           public void run(){
+                ElegirSistema vent = new ElegirSistema(modelo);
+                vent.setLocationRelativeTo(null);
+                vent.setVisible(true);
+                dispose();
+           } 
+        };
+        reloj.schedule(cerrar, 500);
+    }
+    
+    @SuppressWarnings("unchecked")
+    // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
+    private void initComponents() {
+
+        jLabel1 = new javax.swing.JLabel();
+        jLabel2 = new javax.swing.JLabel();
+
+        setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
+        getContentPane().setLayout(null);
+
+        jLabel1.setText("Guillermo Bértola 303665");
+        getContentPane().add(jLabel1);
+        jLabel1.setBounds(210, 70, 180, 16);
+
+        jLabel2.setText("Santiago Durán 351471");
+        getContentPane().add(jLabel2);
+        jLabel2.setBounds(210, 110, 180, 16);
+
+        setBounds(0, 0, 454, 212);
+    }// </editor-fold>//GEN-END:initComponents
+
+    
+
+    // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JLabel jLabel1;
+    private javax.swing.JLabel jLabel2;
+    // End of variables declaration//GEN-END:variables
+    private Sistema modelo;
+}

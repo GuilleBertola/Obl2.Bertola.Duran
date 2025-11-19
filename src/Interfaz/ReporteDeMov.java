@@ -125,7 +125,7 @@ public ReporteDeMov(Sistema sis) {
             }
         });
         getContentPane().add(btnMeses);
-        btnMeses.setBounds(525, 10, 140, 23);
+        btnMeses.setBounds(500, 10, 140, 23);
 
         listaMes.setModel(new javax.swing.AbstractListModel<String>() {
             String[] strings = { "Item 1", "Item 2", "Item 3", "Item 4", "Item 5" };
@@ -135,7 +135,7 @@ public ReporteDeMov(Sistema sis) {
         jScrollPane4.setViewportView(listaMes);
 
         getContentPane().add(jScrollPane4);
-        jScrollPane4.setBounds(560, 40, 60, 146);
+        jScrollPane4.setBounds(530, 40, 90, 146);
 
         btnEmp.setText("Flitrar por empleado");
         btnEmp.addActionListener(new java.awt.event.ActionListener() {
@@ -163,9 +163,9 @@ public ReporteDeMov(Sistema sis) {
             }
         });
         getContentPane().add(btnExportar);
-        btnExportar.setBounds(430, 210, 75, 23);
+        btnExportar.setBounds(430, 210, 150, 23);
 
-        setBounds(0, 0, 704, 428);
+        setBounds(0, 0, 704, 468);
     }// </editor-fold>//GEN-END:initComponents
 
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
