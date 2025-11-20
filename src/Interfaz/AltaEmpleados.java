@@ -61,6 +61,12 @@ public class AltaEmpleados extends javax.swing.JFrame implements Observer{
 
         getContentPane().add(jScrollPane1);
         jScrollPane1.setBounds(80, 70, 120, 146);
+
+        txtNom.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                txtNomActionPerformed(evt);
+            }
+        });
         getContentPane().add(txtNom);
         txtNom.setBounds(330, 60, 180, 22);
         getContentPane().add(txtCi);
@@ -162,9 +168,13 @@ public class AltaEmpleados extends javax.swing.JFrame implements Observer{
         Manager man = (Manager) listaManagers.getSelectedValue();
         Area ar = (Area) listaAreas.getSelectedValue();
         boolean todoOk = !modelo.existeCi(ci);
-        if(ar == null || man == null || txtCv.getText().equals("")){
+        if(ar == null || man == null || txtCv.getText().equals("") || nom.equals("") || ci.equals("")){
             JOptionPane.showMessageDialog(this, "Asegurese de completar todos los datos", "error", 0);
             todoOk = false;
+        }
+        if(modelo.existeCi(ci)){
+            JOptionPane.showMessageDialog(this, "Ya hay alguien en el sistema con esa cédula", "error", 0);
+            todoOk=false;
         }
         try{
             salario = Integer.parseInt(txtSal.getText());
@@ -217,6 +227,10 @@ public class AltaEmpleados extends javax.swing.JFrame implements Observer{
         }
         
     }//GEN-LAST:event_listaEmpleadosValueChanged
+
+    private void txtNomActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtNomActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_txtNomActionPerformed
 
     @Override
     public void update(Observable o, Object arg) {
