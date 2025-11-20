@@ -48,7 +48,7 @@ public class Area implements Comparable<Area>, Serializable{
     }
     
     @Override
-    public String toString() {//ver que queremos que tenga el toString
+    public String toString() {
         return nombre;
     }
     

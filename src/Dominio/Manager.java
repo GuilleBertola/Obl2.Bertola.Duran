@@ -6,14 +6,14 @@ import java.io.Serializable;
 public class Manager implements Comparable<Manager>, Serializable{
     private String cedula;
     private String nombre;
-    private int antiguedad; //leer letra sobre antiguedad
+    private int antiguedad;
     private String celular;
 
     public String getNombre() {
         return nombre;
     }
 
-    public void setNombre(String nombre) {//que tan necesario es un set nombre??
+    public void setNombre(String nombre) {
         this.nombre = nombre;
     }
 
@@ -21,7 +21,7 @@ public class Manager implements Comparable<Manager>, Serializable{
         return antiguedad;
     }
 
-    public void setAntiguedad(int antiguedad) { //es necesario??, lo mas intuitivo seria una funcion que sume una a antiguedad
+    public void setAntiguedad(int antiguedad) {
         this.antiguedad = antiguedad;
     }
 
@@ -40,7 +40,7 @@ public class Manager implements Comparable<Manager>, Serializable{
     public Manager(String cedula, String nombre, int antiguedad, String celular) {
         this.cedula = cedula;
         this.nombre = nombre;
-        this.antiguedad = antiguedad; //deberia empezar en 0??
+        this.antiguedad = antiguedad;
         this.celular = celular;
     }
 

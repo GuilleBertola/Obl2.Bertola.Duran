@@ -68,9 +68,8 @@ public class ReporteEstado extends javax.swing.JFrame implements Observer {
             for(Empleado emp : empleados){
                 JButton nuevo = new JButton(" ");
                 nuevo.setMargin(new Insets(-5, -5, -5, -5));
-                //int brillo = metodo que de un numero del 1 al 100 dependiendo el sueldo
                 int col = modelo.colorBtn(emp);
-                nuevo.setBackground(new Color(0, 0, col)); //Da un color en RGB
+                nuevo.setBackground(new Color(0, 0, col));
                 nuevo.setForeground(Color.WHITE);
                 nuevo.setText(emp.getNombre());
                 nuevo.setName(emp.getCedula());

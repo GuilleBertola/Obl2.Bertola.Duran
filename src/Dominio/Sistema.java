@@ -99,7 +99,7 @@ public class Sistema extends Observable implements Serializable {
                     public int compare(Area a1, Area a2){
                         float dif = (((float)a2.getPresupuesto()-(float)a2.getPresupuestoRestante())/(float)a2.getPresupuesto()) - (((float)a1.getPresupuesto()-(float)a1.getPresupuestoRestante())/(float)a1.getPresupuesto());
                         if(dif == 0){
-                            dif = a2.getNombre().toUpperCase().compareTo(a1.getNombre().toUpperCase());
+                            dif = a1.getNombre().toUpperCase().compareTo(a2.getNombre().toUpperCase());
                         }
                         int sig = 0;
                         if(dif < 0){
@@ -214,7 +214,7 @@ public class Sistema extends Observable implements Serializable {
         notifyObservers();
     }
     
-    public int colorBtn(Empleado unEmpleado){ //capaz me estoy re complicando, el objetivo del metodo es separar a los empleados en 5 percentiles de sueldos, para separarlos por color
+    public int colorBtn(Empleado unEmpleado){ //Me complique demas en este metodo, la idea es que separe a los empleado en 5 grupos de sueldo, devolviendo asi un numero entre 0 y 250 que se usa para determinar la cantidad de azul
        int percentil = 0;
        ArrayList<Empleado> lista = listarEmpleadosArea(unEmpleado.getArea());
        int max = unEmpleado.getSalario();
@@ -244,8 +244,5 @@ public class Sistema extends Observable implements Serializable {
         
         return percentil * 50;
     }
-    
-    
-    
     
 }

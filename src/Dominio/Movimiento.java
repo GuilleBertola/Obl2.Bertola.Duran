@@ -8,7 +8,7 @@ public class Movimiento implements Comparable<Movimiento>, Serializable{
     private Area areaOrigen;
     private Area areaDestino;
     private Empleado empleado;
-    private static String[] meses;
+    private String[] meses;
 
     public int getMes() {
         return mes;

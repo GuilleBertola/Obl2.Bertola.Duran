@@ -191,6 +191,7 @@ public class ReporteInteligente extends javax.swing.JFrame implements Observer{
     }
     
     public void cargarAlgunasListas(){
+        modelo.ordenarListaAreas();
         listaOrigen.setListData(modelo.getListaAreas().toArray());
         listaDestinos.setListData(modelo.getListaAreas().toArray());
     }
@@ -198,6 +199,7 @@ public class ReporteInteligente extends javax.swing.JFrame implements Observer{
     public void cargarListaEmpleados(){
         Area areaSelec = (Area) listaOrigen.getSelectedValue();
         if(areaSelec != null){
+            modelo.ordenarListaEmpleados();
             listaEmpleados.setListData(modelo.listarEmpleadosArea(areaSelec).toArray());
         }
     }

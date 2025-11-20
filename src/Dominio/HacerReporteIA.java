@@ -53,7 +53,7 @@ public class HacerReporteIA {
 
         //Se crea una "part" (ver proximo comment) explicita el tipo de dato y le pasa el prompt. si enviaramos varios tipos de datos este es uno de ellos
         JsonObject part = new JsonObject();
-        part.addProperty("text", prompt);
+        part.addProperty("text", prompt); //Esto seria como un HashMap?
 
         // El array parts lleva los diferentes tipos de entradas (videos, imagenes texto) solo ponemos el texto dentro porque solo eso usamos
         JsonArray partsArray = new JsonArray();
@@ -71,7 +71,7 @@ public class HacerReporteIA {
         JsonObject jsonRequest = new JsonObject();
         jsonRequest.add("contents", contentsArray);
 
-        String requestBody = jsonRequest.toString();
+        String requestBody = jsonRequest.toString(); //Solo se pueden enviar texto, manda el texto con el formato esperado del toString
 
         part.addProperty("text", prompt);
         content.getAsJsonArray("parts").add(part);
@@ -79,17 +79,17 @@ public class HacerReporteIA {
 
         
         // 2. Crear la petición HTTP
-        HttpClient client = HttpClient.newHttpClient();
+        HttpClient client = HttpClient.newHttpClient(); //Crea el "navegador"
         HttpRequest request = HttpRequest.newBuilder()
-                .uri(URI.create(URL))
+                .uri(URI.create(URL)) //Esta es la url creada anteriormente con la api
                 .header("Content-Type", "application/json")
-                .POST(HttpRequest.BodyPublishers.ofString(requestBody))
+                .POST(HttpRequest.BodyPublishers.ofString(requestBody)) //Este es el texto creado en formato gson
                 .build();
 
         // 3. Enviar la petición y obtener la respuesta
         HttpResponse<String> response = client.send(request, HttpResponse.BodyHandlers.ofString());
 
-        if (response.statusCode() != 200) {
+        if (response.statusCode() != 200) { //Si el status es 200 sigifica que fue exitoso, si no es un error el cual lo dice, mas adelante trabajamos en este error
             throw new RuntimeException("Error en la consulta a Gemini: Código HTTP " + response.statusCode() + " - " + response.body());
         }
 
@@ -97,13 +97,8 @@ public class HacerReporteIA {
         Gson gson = new Gson();
         JsonObject jsonResponse = gson.fromJson(response.body(), JsonObject.class);
 
-        // Navegar en el JSON para encontrar el texto generado
-        // candidates -> 0 -> content -> parts -> 0 -> text
-        String reporte = jsonResponse
-                            .getAsJsonArray("candidates").get(0).getAsJsonObject()
-                            .getAsJsonObject("content")
-                            .getAsJsonArray("parts").get(0).getAsJsonObject()
-                            .get("text").getAsString();
+        //La respuesta viene en el mismo formato que lo enviamos, hay que entar en todos los diferentes objetos hasta llegar al texto
+        String reporte = jsonResponse.getAsJsonArray("candidates").get(0).getAsJsonObject().getAsJsonObject("content").getAsJsonArray("parts").get(0).getAsJsonObject().get("text").getAsString();
 
         return reporte;
     }
