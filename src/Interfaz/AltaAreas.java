@@ -112,6 +112,10 @@ public class AltaAreas extends javax.swing.JFrame {
             todoOk = false;
             JOptionPane.showMessageDialog(this, "Complete todos los campos", "error", 0);
         }
+        if (!modelo.nombreAreaDisponible(txtNom.getText())){
+            todoOk = false;
+            JOptionPane.showMessageDialog(this, "Ya existe un área con ese nombre", "error", 0);
+        }
         if(todoOk){
             modelo.agregarArea(new Area(nom, desc, presupuesto));
             JOptionPane.showMessageDialog(this, nom + " agregado con exito", "Confirmacion", 1);

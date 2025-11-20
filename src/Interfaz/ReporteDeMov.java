@@ -216,10 +216,12 @@ public class ReporteDeMov extends javax.swing.JFrame implements Observer{
         for(int i =0;i<modelo.getListaMovimientos().size();i++){            
             Movimiento o=modelo.getListaMovimientos().get(i);
             int m=modelo.getListaMovimientos().get(i).getMes();
-            if(m==(mov.mesANum(listaMes.getSelectedValue()))){
-                mt.addRow(new Object[]{cant,o.getMes(),o.getAreaOrigen(),o.getAreaDestino(),o.getEmpleado().getNombre()});
+            if(listaMes.getSelectedValue()!= null){
+                if(m==(mov.mesANum(listaMes.getSelectedValue()))){
+                    mt.addRow(new Object[]{cant,o.getMes(),o.getAreaOrigen(),o.getAreaDestino(),o.getEmpleado().getNombre()});
+                }
+                cant++;
             }
-            cant++;
         }
     }//GEN-LAST:event_btnMesesActionPerformed
 
@@ -247,9 +249,9 @@ public class ReporteDeMov extends javax.swing.JFrame implements Observer{
     }
     
     public void cargarListaDestino(){
-        String [] a= new String[modelo.getListaAreas().size()];
+        Area [] a= new Area[modelo.getListaAreas().size()];
         for (int i = 0; i < modelo.getListaAreas().size(); i++) {
-            a[i] = modelo.getListaAreas().get(i).getNombre();
+            a[i] = modelo.getListaAreas().get(i);
         }
         listaDestino.setListData(a);
         listaOrigen.setListData(a);        
@@ -261,9 +263,9 @@ public class ReporteDeMov extends javax.swing.JFrame implements Observer{
     }
     
     public void cargarListaEmpleados(){
-        String [] e= new String[modelo.getListaEmpleados().size()];
+        Empleado [] e= new Empleado[modelo.getListaEmpleados().size()];
         for (int i = 0; i < modelo.getListaEmpleados().size(); i++) {
-            e[i] = modelo.getListaEmpleados().get(i).getNombre();
+            e[i] = modelo.getListaEmpleados().get(i);
         }
         listaEmp.setListData(e);        
     }

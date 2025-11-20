@@ -111,6 +111,10 @@ public class AltaManagers extends javax.swing.JFrame {
             todoOk = false;
             JOptionPane.showMessageDialog(this, "Complete todos los campos.", "error", 0);
         }
+        if(modelo.existeCi(ci)){
+            JOptionPane.showMessageDialog(this, "Ya hay alguien en el sistema con esa cédula", "error", 0);
+            todoOk=false;
+        }
         if(todoOk){
             modelo.agregarManager(new Manager(ci, nom, antig, cel));
             JOptionPane.showMessageDialog(this, nom + " agregado con exito", "Confirmacion", 1);
