@@ -1,19 +1,19 @@
+//Guillermo Bértola 303665 y Santiago Durán 351471
 package Interfaz;
 
 import Dominio.*;
-import Interfaz.*;
 import javax.swing.*;
 
 
 public class Menu extends javax.swing.JFrame {
     
-    private static final java.util.logging.Logger logger = java.util.logging.Logger.getLogger(Menu.class.getName());
+   // private static final java.util.logging.Logger logger = java.util.logging.Logger.getLogger(Menu.class.getName());
 
     
     public Menu(Sistema sis) {
         modelo = sis;
         initComponents();
-        addKeyListener(new java.awt.event.KeyAdapter() {
+        addKeyListener(new java.awt.event.KeyAdapter() {//esto a mi no me funca
         @Override
         public void keyPressed(java.awt.event.KeyEvent e) {
             if (e.getKeyCode() == java.awt.event.KeyEvent.VK_F1) {
@@ -22,7 +22,7 @@ public class Menu extends javax.swing.JFrame {
         }
     });
   
-    this.setFocusable(true);
+    this.setFocusable(true); //Que es esto??
     }
     
     @SuppressWarnings("unchecked")
@@ -79,7 +79,7 @@ public class Menu extends javax.swing.JFrame {
         jLabel1.setMaximumSize(new java.awt.Dimension(20, 8));
         jLabel1.setMinimumSize(new java.awt.Dimension(20, 8));
         getContentPane().add(jLabel1);
-        jLabel1.setBounds(-40, -60, 1010, 880);
+        jLabel1.setBounds(-40, -60, 801, 740);
 
         areas.setText("Áreas");
         areas.addActionListener(new java.awt.event.ActionListener() {
@@ -192,7 +192,7 @@ public class Menu extends javax.swing.JFrame {
 
         setJMenuBar(jMenuBar1);
 
-        setBounds(0, 0, 726, 819);
+        setBounds(0, 0, 897, 836);
     }// </editor-fold>//GEN-END:initComponents
 
     private void areasActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_areasActionPerformed

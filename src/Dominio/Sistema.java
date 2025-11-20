@@ -51,9 +51,6 @@ public class Sistema extends Observable implements Serializable {
         listaManagers.remove(unManager);
         notificar();
     }
-    public void eliminarEmpleado(Empleado unEmpleado){
-        listaEmpleados.remove(unEmpleado);
-    }
     public Area getArea(String nom){
         Area ret = null;
         for(Area a : this.listaAreas){
@@ -82,7 +79,7 @@ public class Sistema extends Observable implements Serializable {
         return ret;
     }
     
-     public Sistema(){
+    public Sistema(){
         listaAreas = new ArrayList<>();
         listaManagers = new ArrayList<>();
         listaEmpleados = new ArrayList<>();

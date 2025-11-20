@@ -1,3 +1,4 @@
+//Guillermo Bértola 303665 y Santiago Durán 351471
 package Interfaz;
 
 import java.util.*;
@@ -5,7 +6,7 @@ import Dominio.*;
 
 public class Bienvenida extends javax.swing.JFrame {
     
-    private static final java.util.logging.Logger logger = java.util.logging.Logger.getLogger(Bienvenida.class.getName());
+    //private static final java.util.logging.Logger logger = java.util.logging.Logger.getLogger(Bienvenida.class.getName());
 
     public Bienvenida(Sistema sis) {
         initComponents();
@@ -35,6 +36,7 @@ public class Bienvenida extends javax.swing.JFrame {
 
         jLabel1 = new javax.swing.JLabel();
         jLabel2 = new javax.swing.JLabel();
+        jLabel3 = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
         getContentPane().setLayout(null);
@@ -47,6 +49,10 @@ public class Bienvenida extends javax.swing.JFrame {
         getContentPane().add(jLabel2);
         jLabel2.setBounds(210, 110, 180, 16);
 
+        jLabel3.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/GS.png"))); // NOI18N
+        getContentPane().add(jLabel3);
+        jLabel3.setBounds(60, -10, 250, 240);
+
         setBounds(0, 0, 454, 212);
     }// </editor-fold>//GEN-END:initComponents
 
@@ -55,6 +61,7 @@ public class Bienvenida extends javax.swing.JFrame {
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
+    private javax.swing.JLabel jLabel3;
     // End of variables declaration//GEN-END:variables
     private Sistema modelo;
 }
