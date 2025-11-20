@@ -130,7 +130,6 @@ public class ReporteInteligente extends javax.swing.JFrame implements Observer{
             this.empleado = empleado;
         }
 
-        // ********* 1. Tarea Pesada (doInBackground): FUERA del EDT *********
         @Override
         protected String doInBackground() throws Exception {
             String respuesta = "Esperando respuesta";
@@ -143,7 +142,6 @@ public class ReporteInteligente extends javax.swing.JFrame implements Observer{
             return respuesta;
         }
 
-        // Método que replica tu lógica de consulta (pedirRespuesta)
         public String pedirRespuesta(Area origen, Area destino, Empleado empleado){
             String res = "";
             HacerReporteIA reporte = new HacerReporteIA();
@@ -165,15 +163,19 @@ public class ReporteInteligente extends javax.swing.JFrame implements Observer{
             return res;
         }
 
-        // ********* 2. Finalización (done): DE VUELTA en el EDT *********
+        //Hace el done despues del doInBackground
         @Override
         protected void done() {
             try {
-                // Obtener el resultado de doInBackground
+                // devuelve el resultado de doInBackground
                 String respuesta = get(); 
 
                 if (respuesta.equals("ERROR") || respuesta.equals("Error al leer la API KEY")) {
-                    txtRespuesta.setText("El modelo no pudo responder, vuelva a probar");
+                    if(respuesta.equals("ERROR")){
+                        txtRespuesta.setText("El modelo no pudo responder, vuelva a probar");
+                    }else{
+                        txtRespuesta.setText(respuesta);
+                    }
                     img.setIcon(new ImageIcon(getClass().getResource("/imagenes/Cruz.png")));
                 } else {
                     txtRespuesta.setText(respuesta);

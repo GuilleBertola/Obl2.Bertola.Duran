@@ -14,7 +14,6 @@ public class ModificacionManagers extends javax.swing.JFrame implements Observer
         initComponents();
         cargarLista();
         modelo.addObserver(this);
-        
     }
 
     @SuppressWarnings("unchecked")

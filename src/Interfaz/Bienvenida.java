@@ -5,8 +5,6 @@ import java.util.*;
 import Dominio.*;
 
 public class Bienvenida extends javax.swing.JFrame {
-    
-    //private static final java.util.logging.Logger logger = java.util.logging.Logger.getLogger(Bienvenida.class.getName());
 
     public Bienvenida(Sistema sis) {
         initComponents();
@@ -54,8 +52,6 @@ public class Bienvenida extends javax.swing.JFrame {
 
         setBounds(0, 0, 454, 212);
     }// </editor-fold>//GEN-END:initComponents
-
-    
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JLabel jLabel1;

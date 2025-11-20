@@ -7,8 +7,6 @@ import javax.swing.*;
 
 
 public class HacerMovimiento extends javax.swing.JFrame implements Observer{
-    
-    private static final java.util.logging.Logger logger = java.util.logging.Logger.getLogger(HacerMovimiento.class.getName());
 
     public HacerMovimiento(Sistema sis) {
         initComponents();

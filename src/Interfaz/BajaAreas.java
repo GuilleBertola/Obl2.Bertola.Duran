@@ -9,7 +9,6 @@ import Archivos.*;
 
 public class BajaAreas extends javax.swing.JFrame implements Observer {
 
-
     public BajaAreas(Sistema sis) {
         modelo = sis;
         initComponents();

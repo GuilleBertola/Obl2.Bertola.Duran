@@ -8,10 +8,7 @@ import java.util.*;
 import Archivos.*;
 
 public class AltaEmpleados extends javax.swing.JFrame implements Observer{
-    
-    private static final java.util.logging.Logger logger = java.util.logging.Logger.getLogger(AltaEmpleados.class.getName());
 
-    //Como vamos a mostrar los datos del empleado?
     public AltaEmpleados(Sistema sis) {
         modelo = sis;
         initComponents();
