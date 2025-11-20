@@ -10,8 +10,6 @@ import java.util.*;
 import javax.swing.*;
 
 public class ReporteEstado extends javax.swing.JFrame implements Observer {
-    
-    //private static final java.util.logging.Logger logger = java.util.logging.Logger.getLogger(ReporteEstado.class.getName());
 
     public ReporteEstado(Sistema sis) {
         modelo = sis;

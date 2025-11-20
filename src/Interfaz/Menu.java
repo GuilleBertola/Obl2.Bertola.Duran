@@ -6,10 +6,7 @@ import javax.swing.*;
 
 
 public class Menu extends javax.swing.JFrame {
-    
-   // private static final java.util.logging.Logger logger = java.util.logging.Logger.getLogger(Menu.class.getName());
-
-    
+        
     public Menu(Sistema sis) {
         modelo = sis;
         initComponents();
@@ -82,11 +79,6 @@ public class Menu extends javax.swing.JFrame {
         jLabel1.setBounds(-40, -60, 801, 740);
 
         areas.setText("Áreas");
-        areas.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                areasActionPerformed(evt);
-            }
-        });
 
         AreaAlt.setText("Alta");
         AreaAlt.addActionListener(new java.awt.event.ActionListener() {
@@ -194,10 +186,6 @@ public class Menu extends javax.swing.JFrame {
 
         setBounds(0, 0, 897, 836);
     }// </editor-fold>//GEN-END:initComponents
-
-    private void areasActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_areasActionPerformed
-        
-    }//GEN-LAST:event_areasActionPerformed
 
     private void AreaModActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_AreaModActionPerformed
         ModificacionAreas vent = new ModificacionAreas(modelo);

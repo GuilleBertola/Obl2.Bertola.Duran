@@ -29,9 +29,6 @@
           <Properties>
             <Property name="text" type="java.lang.String" value="&#xc1;reas"/>
           </Properties>
-          <Events>
-            <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="areasActionPerformed"/>
-          </Events>
           <SubComponents>
             <MenuItem class="javax.swing.JMenuItem" name="AreaAlt">
               <Properties>

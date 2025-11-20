@@ -51,29 +51,25 @@ public class HacerReporteIA {
         // El modelo solicitado: gemini-2.5-flash
         String URL = "https://generativelanguage.googleapis.com/v1beta/models/gemini-2.5-flash:generateContent?key=" + API_KEY;
 
-        // 1. Construir el cuerpo de la petición en JSON (payload)
-        // Se recomienda usar objetos GSON para construir JSON de forma segura.
+        //Se crea una "part" (ver proximo comment) explicita el tipo de dato y le pasa el prompt. si enviaramos varios tipos de datos este es uno de ellos
         JsonObject part = new JsonObject();
         part.addProperty("text", prompt);
 
-        // 2. Crear el array 'parts' y añadir el objeto 'part'
+        // El array parts lleva los diferentes tipos de entradas (videos, imagenes texto) solo ponemos el texto dentro porque solo eso usamos
         JsonArray partsArray = new JsonArray();
         partsArray.add(part); 
 
-        // 3. Crear el objeto 'content' y añadir el array 'parts'
+        // cada content es una de las interacciones con el modelo
         JsonObject content = new JsonObject();
         content.add("parts", partsArray);
 
-        // 4. Crear el array 'contents' y añadir el objeto 'content'
+        // Aca van las diferentes partes de la conversacion
         JsonArray contentsArray = new JsonArray();
         contentsArray.add(content);
 
         // 5. Crear el objeto final 'jsonRequest' y añadir el array 'contents'
         JsonObject jsonRequest = new JsonObject();
         jsonRequest.add("contents", contentsArray);
-
-        // Opcional: añade el modelo si quieres especificarlo explícitamente, 
-        // aunque la URL ya lo tiene implícito.
 
         String requestBody = jsonRequest.toString();
 

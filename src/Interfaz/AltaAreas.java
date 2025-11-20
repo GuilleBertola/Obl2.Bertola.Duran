@@ -12,10 +12,6 @@ public class AltaAreas extends javax.swing.JFrame {
         cargarLista();
     }
 
-    public AltaAreas() {
-        throw new UnsupportedOperationException("Not supported yet."); // Generated from nbfs://nbhost/SystemFileSystem/Templates/Classes/Code/GeneratedMethodBody
-    }
-
     @SuppressWarnings("unchecked")
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
@@ -112,6 +108,10 @@ public class AltaAreas extends javax.swing.JFrame {
             txtPresupuesto.setText("");
             JOptionPane.showMessageDialog(this, "Ingrese un numero en presupuesto", "error", 0);
         } 
+        if(nom.equals("") || desc.equals("")){
+            todoOk = false;
+            JOptionPane.showMessageDialog(this, "Complete todos los campos", "error", 0);
+        }
         if(todoOk){
             modelo.agregarArea(new Area(nom, desc, presupuesto));
             JOptionPane.showMessageDialog(this, nom + " agregado con exito", "Confirmacion", 1);
