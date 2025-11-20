@@ -192,7 +192,7 @@ public class Menu extends javax.swing.JFrame {
 
         setJMenuBar(jMenuBar1);
 
-        setBounds(0, 0, 897, 836);
+        setBounds(0, 0, 766, 706);
     }// </editor-fold>//GEN-END:initComponents
 
     private void areasActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_areasActionPerformed

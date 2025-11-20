@@ -10,7 +10,6 @@ public class Bienvenida extends javax.swing.JFrame {
 
     public Bienvenida(Sistema sis) {
         initComponents();
-        System.out.println(getClass().getResource("/img/Logo.png"));
         modelo = sis;
         cerrarConTimer();
 
