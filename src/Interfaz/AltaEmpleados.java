@@ -162,7 +162,7 @@ public class AltaEmpleados extends javax.swing.JFrame implements Observer{
         Manager man = (Manager) listaManagers.getSelectedValue();
         Area ar = (Area) listaAreas.getSelectedValue();
         boolean todoOk = !modelo.existeCi(ci);
-        if(ar == null || man == null || txtCv.getText().equals("")){
+        if(ar == null || man == null || txtCv.getText().equals("") || nom.equals("") || ci.equals("")){
             JOptionPane.showMessageDialog(this, "Asegurese de completar todos los datos", "error", 0);
             todoOk = false;
         }

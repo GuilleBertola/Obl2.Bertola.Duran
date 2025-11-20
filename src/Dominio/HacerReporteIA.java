@@ -63,11 +63,11 @@ public class HacerReporteIA {
         JsonObject content = new JsonObject();
         content.add("parts", partsArray);
 
-        // Aca van las diferentes partes de la conversacion
+        // Aca van las diferentes partes de la conversacion, solo hay un objeto porque solo hacemos una pregunta
         JsonArray contentsArray = new JsonArray();
         contentsArray.add(content);
 
-        // 5. Crear el objeto final 'jsonRequest' y añadir el array 'contents'
+        // Este es el formato que se le envia
         JsonObject jsonRequest = new JsonObject();
         jsonRequest.add("contents", contentsArray);
 

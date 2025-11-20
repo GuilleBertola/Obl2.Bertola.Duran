@@ -107,6 +107,10 @@ public class AltaManagers extends javax.swing.JFrame {
             JOptionPane.showMessageDialog(this, "Ingrese un numero en antiguedad", "error", 0);
             txtAntig.setText("");
         }
+        if(nom.equals("") || ci.equals("")){
+            todoOk = false;
+            JOptionPane.showMessageDialog(this, "Complete todos los campos.", "error", 0);
+        }
         if(todoOk){
             modelo.agregarManager(new Manager(ci, nom, antig, cel));
             JOptionPane.showMessageDialog(this, nom + " agregado con exito", "Confirmacion", 1);
