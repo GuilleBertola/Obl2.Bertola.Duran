@@ -10,7 +10,7 @@ public class Menu extends javax.swing.JFrame {
     public Menu(Sistema sis) {
         modelo = sis;
         initComponents();
-        addKeyListener(new java.awt.event.KeyAdapter() {//esto a mi no me funca
+        addKeyListener(new java.awt.event.KeyAdapter() {
         @Override
         public void keyPressed(java.awt.event.KeyEvent e) {
             if (e.getKeyCode() == java.awt.event.KeyEvent.VK_F1) {
@@ -19,7 +19,7 @@ public class Menu extends javax.swing.JFrame {
         }
     });
   
-    this.setFocusable(true); //Que es esto??
+    this.setFocusable(true); 
     }
     
     @SuppressWarnings("unchecked")

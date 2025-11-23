@@ -3,7 +3,6 @@ package Interfaz;
 
 import Dominio.*;
 import java.util.*;
-import javax.swing.*;
 import javax.swing.table.DefaultTableModel;
 import java.io.File;
 import java.io.FileWriter;
@@ -18,10 +17,8 @@ public class ReporteDeMov extends javax.swing.JFrame implements Observer{
     public ReporteDeMov(Sistema sis) {
         modelo = sis;
         initComponents();
-        mt = new DefaultTableModel(); //pondria esto en un metodo capaz, no se q es
-        mt.setColumnIdentifiers(new Object[]{"Movimientos", "Mes", "Origen", "Destino", "Empleado"});
-        tabla.setModel(mt);
-        cargarListas(); //En algun momento ordena??
+        cargarListas(); 
+        crearMt();
         modelo.addObserver(this);
     }
 
@@ -188,6 +185,12 @@ public class ReporteDeMov extends javax.swing.JFrame implements Observer{
         } 
     }//GEN-LAST:event_btnOrigenActionPerformed
 
+    public void crearMt(){
+        mt = new DefaultTableModel(); //pondria esto en un metodo capaz, no se q es
+        mt.setColumnIdentifiers(new Object[]{"Movimientos", "Mes", "Origen", "Destino", "Empleado"});
+        tabla.setModel(mt);
+    }
+    
     private void btnDestinoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnDestinoActionPerformed
         int cant=1;
         mt.setRowCount(0);
