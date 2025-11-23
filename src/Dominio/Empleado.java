@@ -73,5 +73,4 @@ public class Empleado implements Comparable<Empleado>, Serializable{ //deberian 
         return this.getSalario()-unEmpleado.getSalario();
     }
     
-    
 }

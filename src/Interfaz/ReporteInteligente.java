@@ -34,14 +34,18 @@ public class ReporteInteligente extends javax.swing.JFrame implements Observer{
         jScrollPane4 = new javax.swing.JScrollPane();
         txtRespuesta = new javax.swing.JTextArea();
         img = new javax.swing.JLabel();
+        jLabel1 = new javax.swing.JLabel();
+        jLabel2 = new javax.swing.JLabel();
+        jLabel3 = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
+        setTitle("Reporte Inteligente");
         getContentPane().setLayout(null);
 
         jScrollPane1.setViewportView(listaEmpleados);
 
         getContentPane().add(jScrollPane1);
-        jScrollPane1.setBounds(160, 100, 47, 140);
+        jScrollPane1.setBounds(160, 90, 47, 140);
 
         listaDestinos.setModel(new javax.swing.AbstractListModel() {
             String[] strings = { "Item 1", "Item 2", "Item 3", "Item 4", "Item 5" };
@@ -51,7 +55,7 @@ public class ReporteInteligente extends javax.swing.JFrame implements Observer{
         jScrollPane2.setViewportView(listaDestinos);
 
         getContentPane().add(jScrollPane2);
-        jScrollPane2.setBounds(270, 100, 47, 146);
+        jScrollPane2.setBounds(50, 280, 47, 146);
 
         listaOrigen.setModel(new javax.swing.AbstractListModel() {
             String[] strings = { "Item 1", "Item 2", "Item 3", "Item 4", "Item 5" };
@@ -66,7 +70,7 @@ public class ReporteInteligente extends javax.swing.JFrame implements Observer{
         jScrollPane3.setViewportView(listaOrigen);
 
         getContentPane().add(jScrollPane3);
-        jScrollPane3.setBounds(60, 100, 47, 146);
+        jScrollPane3.setBounds(40, 90, 47, 146);
 
         btnAceptar.setText("Pedir Reporte");
         btnAceptar.addActionListener(new java.awt.event.ActionListener() {
@@ -75,7 +79,7 @@ public class ReporteInteligente extends javax.swing.JFrame implements Observer{
             }
         });
         getContentPane().add(btnAceptar);
-        btnAceptar.setBounds(220, 40, 120, 23);
+        btnAceptar.setBounds(260, 70, 120, 23);
 
         btnCerrar.setText("Cerrar");
         btnCerrar.addActionListener(new java.awt.event.ActionListener() {
@@ -84,16 +88,28 @@ public class ReporteInteligente extends javax.swing.JFrame implements Observer{
             }
         });
         getContentPane().add(btnCerrar);
-        btnCerrar.setBounds(70, 40, 72, 23);
+        btnCerrar.setBounds(150, 390, 72, 23);
 
         txtRespuesta.setColumns(20);
         txtRespuesta.setRows(5);
         jScrollPane4.setViewportView(txtRespuesta);
 
         getContentPane().add(jScrollPane4);
-        jScrollPane4.setBounds(380, 110, 330, 300);
+        jScrollPane4.setBounds(260, 140, 460, 300);
         getContentPane().add(img);
-        img.setBounds(400, 20, 70, 70);
+        img.setBounds(420, 40, 70, 70);
+
+        jLabel1.setText("Area de destino");
+        getContentPane().add(jLabel1);
+        jLabel1.setBounds(40, 250, 100, 16);
+
+        jLabel2.setText("Area de origen");
+        getContentPane().add(jLabel2);
+        jLabel2.setBounds(30, 60, 110, 16);
+
+        jLabel3.setText("Empleados");
+        getContentPane().add(jLabel3);
+        jLabel3.setBounds(160, 60, 80, 16);
 
         setBounds(0, 0, 760, 476);
     }// </editor-fold>//GEN-END:initComponents
@@ -191,6 +207,7 @@ public class ReporteInteligente extends javax.swing.JFrame implements Observer{
     }
     
     public void cargarAlgunasListas(){
+        modelo.ordenarListaAreas();
         listaOrigen.setListData(modelo.getListaAreas().toArray());
         listaDestinos.setListData(modelo.getListaAreas().toArray());
     }
@@ -198,6 +215,7 @@ public class ReporteInteligente extends javax.swing.JFrame implements Observer{
     public void cargarListaEmpleados(){
         Area areaSelec = (Area) listaOrigen.getSelectedValue();
         if(areaSelec != null){
+            modelo.ordenarListaEmpleados();
             listaEmpleados.setListData(modelo.listarEmpleadosArea(areaSelec).toArray());
         }
     }
@@ -216,6 +234,9 @@ public class ReporteInteligente extends javax.swing.JFrame implements Observer{
     private javax.swing.JButton btnAceptar;
     private javax.swing.JButton btnCerrar;
     private javax.swing.JLabel img;
+    private javax.swing.JLabel jLabel1;
+    private javax.swing.JLabel jLabel2;
+    private javax.swing.JLabel jLabel3;
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JScrollPane jScrollPane2;
     private javax.swing.JScrollPane jScrollPane3;

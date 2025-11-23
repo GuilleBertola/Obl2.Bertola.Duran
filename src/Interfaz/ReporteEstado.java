@@ -15,6 +15,7 @@ public class ReporteEstado extends javax.swing.JFrame implements Observer {
         modelo = sis;
         initComponents();
         cargarLista();
+        modelo.addObserver(this);
     }
 
     @SuppressWarnings("unchecked")
@@ -27,6 +28,7 @@ public class ReporteEstado extends javax.swing.JFrame implements Observer {
         txtInfo = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
+        setTitle("Reporte de estado de area");
         getContentPane().setLayout(null);
 
         listaAreas.setModel(new javax.swing.AbstractListModel() {
@@ -52,7 +54,7 @@ public class ReporteEstado extends javax.swing.JFrame implements Observer {
         getContentPane().add(txtInfo);
         txtInfo.setBounds(200, 30, 170, 16);
 
-        setBounds(0, 0, 603, 332);
+        setBounds(0, 0, 580, 332);
     }// </editor-fold>//GEN-END:initComponents
 
     private void listaAreasValueChanged(javax.swing.event.ListSelectionEvent evt) {//GEN-FIRST:event_listaAreasValueChanged
@@ -61,16 +63,15 @@ public class ReporteEstado extends javax.swing.JFrame implements Observer {
             panelEmpleados.removeAll();
             txtInfo.setText("");
         }else{
-            float porcentaje = (((float)a.getPresupuesto()-(float)a.getPresupuestoRestante())/(float)a.getPresupuesto())*100;
-            txtInfo.setText(a.getNombre() + ": %" + porcentaje);
+            float porcentaje =(((float)a.getPresupuesto()-(float)a.getPresupuestoRestante())/(float)a.getPresupuesto())*100;
+            txtInfo.setText(a.getNombre() + ": %" + Math.floor(porcentaje));
             ArrayList<Empleado> empleados = modelo.listarEmpleadosArea(a);
             panelEmpleados.removeAll();
             for(Empleado emp : empleados){
                 JButton nuevo = new JButton(" ");
                 nuevo.setMargin(new Insets(-5, -5, -5, -5));
-                //int brillo = metodo que de un numero del 1 al 100 dependiendo el sueldo
                 int col = modelo.colorBtn(emp);
-                nuevo.setBackground(new Color(0, 0, col)); //Da un color en RGB
+                nuevo.setBackground(new Color(0, 0, col));
                 nuevo.setForeground(Color.WHITE);
                 nuevo.setText(emp.getNombre());
                 nuevo.setName(emp.getCedula());
@@ -86,7 +87,7 @@ public class ReporteEstado extends javax.swing.JFrame implements Observer {
     private class AreaListener implements ActionListener {
         @Override
         public void actionPerformed(ActionEvent e) {
-            // este código se ejecutará al presionar el botón, obtengo cuál botón
+            // este código se ejecuta al presionar el botón, obtengo cuál botón
             JButton cual = ((JButton) e.getSource());
             String quien = cual.getName();
             Empleado emp = modelo.getEmpleado(quien);

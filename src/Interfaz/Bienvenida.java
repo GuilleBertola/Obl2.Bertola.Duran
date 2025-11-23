@@ -24,7 +24,7 @@ public class Bienvenida extends javax.swing.JFrame {
                 dispose();
            } 
         };
-        reloj.schedule(cerrar, 500);
+        reloj.schedule(cerrar, 3500);
     }
     
     @SuppressWarnings("unchecked")

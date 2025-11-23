@@ -72,11 +72,11 @@ public class Menu extends javax.swing.JFrame {
         });
         getContentPane().setLayout(null);
 
-        jLabel1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/Logo1.png"))); // NOI18N
+        jLabel1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/imgMenu.png"))); // NOI18N
         jLabel1.setMaximumSize(new java.awt.Dimension(20, 8));
         jLabel1.setMinimumSize(new java.awt.Dimension(20, 8));
         getContentPane().add(jLabel1);
-        jLabel1.setBounds(-40, -60, 801, 740);
+        jLabel1.setBounds(0, 0, 750, 500);
 
         areas.setText("Áreas");
 
@@ -184,7 +184,7 @@ public class Menu extends javax.swing.JFrame {
 
         setJMenuBar(jMenuBar1);
 
-        setBounds(0, 0, 766, 706);
+        setBounds(0, 0, 765, 588);
     }// </editor-fold>//GEN-END:initComponents
 
     private void AreaModActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_AreaModActionPerformed
