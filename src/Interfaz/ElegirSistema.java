@@ -3,8 +3,8 @@ package Interfaz;
 
 import Dominio.*;
 import java.io.FileInputStream;
-import java.io.IOException;
 import java.io.ObjectInputStream;
+import javax.swing.JOptionPane;
 public class ElegirSistema extends javax.swing.JFrame {
 
     public ElegirSistema(Sistema sis) {
@@ -61,8 +61,9 @@ public class ElegirSistema extends javax.swing.JFrame {
     }//GEN-LAST:event_btnSisPrecargadoActionPerformed
 
     private void btnSisGuardadoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnSisGuardadoActionPerformed
-        desserializar();
-        abrirMenu();
+        if(desserializar()){
+            abrirMenu();
+        }
     }//GEN-LAST:event_btnSisGuardadoActionPerformed
 
     private void btnSisNuevoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnSisNuevoActionPerformed
@@ -70,15 +71,18 @@ public class ElegirSistema extends javax.swing.JFrame {
     }//GEN-LAST:event_btnSisNuevoActionPerformed
 
     
-    public void desserializar(){
+    public boolean desserializar(){
+        boolean todoOk = true;
         try{
             FileInputStream arch = new FileInputStream("Datos");
             ObjectInputStream leer = new ObjectInputStream(arch);
             modelo = (Sistema) leer.readObject();
             leer.close();
         }catch(Exception e){
-            System.out.println("Error al desserealizar");
+            JOptionPane.showMessageDialog(this, "Error al recuperar los datos guardados, elija otra opcion", "error", 0);
+            todoOk = false;
         }
+        return todoOk;
     }
     
     

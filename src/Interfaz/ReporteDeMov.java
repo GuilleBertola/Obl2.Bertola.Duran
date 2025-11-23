@@ -9,7 +9,6 @@ import java.io.File;
 import java.io.FileWriter;
 import java.io.PrintWriter;
 import javax.swing.JFileChooser;
-import javax.swing.JOptionPane;
 
 
 public class ReporteDeMov extends javax.swing.JFrame implements Observer{
@@ -18,10 +17,10 @@ public class ReporteDeMov extends javax.swing.JFrame implements Observer{
     public ReporteDeMov(Sistema sis) {
         modelo = sis;
         initComponents();
-        mt = new DefaultTableModel();
+        mt = new DefaultTableModel(); //pondria esto en un metodo capaz, no se q es
         mt.setColumnIdentifiers(new Object[]{"Movimientos", "Mes", "Origen", "Destino", "Empleado"});
         JTable1.setModel(mt);
-        cargarListas();
+        cargarListas(); //En algun momento ordena??
         modelo.addObserver(this);
     }
 
@@ -31,7 +30,7 @@ public class ReporteDeMov extends javax.swing.JFrame implements Observer{
 
         jScrollPane1 = new javax.swing.JScrollPane();
         JTable1 = new javax.swing.JTable();
-        jButton1 = new javax.swing.JButton();
+        btnTodos = new javax.swing.JButton();
         btnOrigen = new javax.swing.JButton();
         jScrollPane2 = new javax.swing.JScrollPane();
         listaOrigen = new javax.swing.JList();
@@ -47,6 +46,7 @@ public class ReporteDeMov extends javax.swing.JFrame implements Observer{
         btnExportar = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
+        setTitle("Reporte de Movimientos");
         getContentPane().setLayout(null);
 
         JTable1.setModel(new javax.swing.table.DefaultTableModel(
@@ -65,14 +65,14 @@ public class ReporteDeMov extends javax.swing.JFrame implements Observer{
         getContentPane().add(jScrollPane1);
         jScrollPane1.setBounds(0, 0, 400, 180);
 
-        jButton1.setText("Mostrar todos los movimientos");
-        jButton1.addActionListener(new java.awt.event.ActionListener() {
+        btnTodos.setText("Mostrar todos los movimientos");
+        btnTodos.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButton1ActionPerformed(evt);
+                btnTodosActionPerformed(evt);
             }
         });
-        getContentPane().add(jButton1);
-        jButton1.setBounds(10, 200, 210, 23);
+        getContentPane().add(btnTodos);
+        btnTodos.setBounds(10, 200, 210, 23);
 
         btnOrigen.setText("Filtrar por area de origen:");
         btnOrigen.addActionListener(new java.awt.event.ActionListener() {
@@ -87,11 +87,6 @@ public class ReporteDeMov extends javax.swing.JFrame implements Observer{
             String[] strings = { "Item 1", "Item 2", "Item 3", "Item 4", "Item 5" };
             public int getSize() { return strings.length; }
             public Object getElementAt(int i) { return strings[i]; }
-        });
-        listaOrigen.addListSelectionListener(new javax.swing.event.ListSelectionListener() {
-            public void valueChanged(javax.swing.event.ListSelectionEvent evt) {
-                listaOrigenValueChanged(evt);
-            }
         });
         jScrollPane2.setViewportView(listaOrigen);
 
@@ -167,7 +162,7 @@ public class ReporteDeMov extends javax.swing.JFrame implements Observer{
         setBounds(0, 0, 704, 468);
     }// </editor-fold>//GEN-END:initComponents
 
-    private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
+    private void btnTodosActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnTodosActionPerformed
         int cant=1;
         mt.setRowCount(0);
         for(int i =0;i<modelo.getListaMovimientos().size();i++){
@@ -177,11 +172,7 @@ public class ReporteDeMov extends javax.swing.JFrame implements Observer{
 
             cant++;
         }
-    }//GEN-LAST:event_jButton1ActionPerformed
-
-    private void listaOrigenValueChanged(javax.swing.event.ListSelectionEvent evt) {//GEN-FIRST:event_listaOrigenValueChanged
-                
-    }//GEN-LAST:event_listaOrigenValueChanged
+    }//GEN-LAST:event_btnTodosActionPerformed
 
     private void btnOrigenActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnOrigenActionPerformed
         int cant=1;
@@ -270,7 +261,7 @@ public class ReporteDeMov extends javax.swing.JFrame implements Observer{
         listaEmp.setListData(e);        
     }
     
-    public void exportarCSV(JTable tabla, File archivo) {
+    public void exportarCSV(JTable tabla, File archivo) { //Alto uso de chat detectado, porque le pasas la tabla como parametro si es un atributo de esta clase??, que es un print writer y porque no usas la clase ArchivoGrabacion
         try (PrintWriter pw = new PrintWriter(new FileWriter(archivo))) {
 
             for (int i = 0; i < tabla.getColumnCount(); i++) {
@@ -324,7 +315,7 @@ public class ReporteDeMov extends javax.swing.JFrame implements Observer{
     private javax.swing.JButton btnExportar;
     private javax.swing.JButton btnMeses;
     private javax.swing.JButton btnOrigen;
-    private javax.swing.JButton jButton1;
+    private javax.swing.JButton btnTodos;
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JScrollPane jScrollPane2;
     private javax.swing.JScrollPane jScrollPane3;
