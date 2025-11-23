@@ -15,10 +15,8 @@ public class ReporteDeMov extends javax.swing.JFrame implements Observer{
     public ReporteDeMov(Sistema sis) {
         modelo = sis;
         initComponents();
-        mt = new DefaultTableModel(); 
-        mt.setColumnIdentifiers(new Object[]{"Movimientos", "Mes", "Origen", "Destino", "Empleado"});
-        tabla.setModel(mt);
         cargarListas(); 
+        crearMt();
         modelo.addObserver(this);
     }
 
@@ -185,6 +183,12 @@ public class ReporteDeMov extends javax.swing.JFrame implements Observer{
         } 
     }//GEN-LAST:event_btnOrigenActionPerformed
 
+    public void crearMt(){
+        mt = new DefaultTableModel(); //pondria esto en un metodo capaz, no se q es
+        mt.setColumnIdentifiers(new Object[]{"Movimientos", "Mes", "Origen", "Destino", "Empleado"});
+        tabla.setModel(mt);
+    }
+    
     private void btnDestinoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnDestinoActionPerformed
         int cant=1;
         mt.setRowCount(0);
