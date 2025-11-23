@@ -79,7 +79,7 @@ public class ElegirSistema extends javax.swing.JFrame {
             modelo = (Sistema) leer.readObject();
             leer.close();
         }catch(Exception e){
-            JOptionPane.showMessageDialog(this, "Error al recuperar los datos guardados, elija otra opcion", "error", 0);
+            JOptionPane.showMessageDialog(this, "Error al recuperar los datos guardados, elija otra opción", "error", 0);
             todoOk = false;
         }
         return todoOk;

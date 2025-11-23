@@ -104,7 +104,7 @@ public class AltaManagers extends javax.swing.JFrame {
             antig = Integer.parseInt(txtAntig.getText());
         }catch(NumberFormatException e){
             todoOk = false;
-            JOptionPane.showMessageDialog(this, "Ingrese un numero en antiguedad", "error", 0);
+            JOptionPane.showMessageDialog(this, "Ingrese un número en antigüedad", "error", 0);
             txtAntig.setText("");
         }
         if(nom.equals("") || ci.equals("")){
@@ -117,7 +117,7 @@ public class AltaManagers extends javax.swing.JFrame {
         }
         if(todoOk){
             modelo.agregarManager(new Manager(ci, nom, antig, cel));
-            JOptionPane.showMessageDialog(this, nom + " agregado con exito", "Confirmacion", 1);
+            JOptionPane.showMessageDialog(this, nom + " agregado con éxito", "Confirmación", 1);
             cargarLista();
             txtNom.setText("");
             txtCi.setText("");

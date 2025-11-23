@@ -111,7 +111,7 @@ public class ModificacionAreas extends javax.swing.JFrame implements Observer{
         String desc = txtDescripcion.getText();
         String nom = txtNom.getText();
         modelo.getArea(nom).setDescripcion(desc);
-        JOptionPane.showMessageDialog(this, "Modificacion hecha con exito", "Confirmacion", 1);
+        JOptionPane.showMessageDialog(this, "Modificación hecha con éxito", "Confirmación", 1);
         listaAreas.clearSelection();
         cargarLista();
     }//GEN-LAST:event_btnCrearAreaActionPerformed

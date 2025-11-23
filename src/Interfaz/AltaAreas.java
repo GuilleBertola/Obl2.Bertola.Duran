@@ -106,7 +106,7 @@ public class AltaAreas extends javax.swing.JFrame {
         }catch(NumberFormatException e){
             todoOk = false;
             txtPresupuesto.setText("");
-            JOptionPane.showMessageDialog(this, "Ingrese un numero en presupuesto", "error", 0);
+            JOptionPane.showMessageDialog(this, "Ingrese un número en presupuesto", "error", 0);
         } 
         if(nom.equals("") || desc.equals("")){
             todoOk = false;
@@ -118,7 +118,7 @@ public class AltaAreas extends javax.swing.JFrame {
         }
         if(todoOk){
             modelo.agregarArea(new Area(nom, desc, presupuesto));
-            JOptionPane.showMessageDialog(this, nom + " agregado con exito", "Confirmacion", 1);
+            JOptionPane.showMessageDialog(this, nom + " agregado con exito", "Confirmación", 1);
             cargarLista();
             txtNom.setText("");
             txtDescripcion.setText("");

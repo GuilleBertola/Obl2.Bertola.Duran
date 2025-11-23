@@ -103,13 +103,13 @@ public class ReporteEstado extends javax.swing.JFrame implements Observer {
             }
             leer.cerrar();
             String texto = "Nombre: " + nom + "\n" + 
-                           "Cedula: " + quien + "\n" +
+                           "Cédula: " + quien + "\n" +
                            "Numero de telefono: " + cel + "\n" +
                            "Salario: " + sal + "\n" +
                            "Manager: " + man + "\n" +
-                           "Area: " + area + "\n" +
+                           "Área: " + area + "\n" +
                            "Curriculum: " + curr;
-            JOptionPane.showMessageDialog(null, texto, "Informacion empleados", 1);
+            JOptionPane.showMessageDialog(null, texto, "Información empleados", 1);
         }
     }
     

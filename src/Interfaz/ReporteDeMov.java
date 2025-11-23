@@ -240,6 +240,7 @@ public class ReporteDeMov extends javax.swing.JFrame implements Observer{
         listaDestino.setListData(modelo.getListaAreas().toArray());
         listaOrigen.setListData(modelo.getListaAreas().toArray());  
         cargarListaMes();
+
         listaEmp.setListData(modelo.getListaEmpleados().toArray());   
     }
     
