@@ -122,7 +122,7 @@ public class ModificacionManagers extends javax.swing.JFrame implements Observer
         String cel = txtCel.getText();
         String ci = txtCi.getText();
         modelo.getManager(ci).setCelular(cel);
-        JOptionPane.showMessageDialog(this, "Modificacion hecha con exito", "Confirmacion", 1);
+        JOptionPane.showMessageDialog(this, "Modificación hecha con éxito", "Confirmación", 1);
         cargarLista();
         listaManagers.clearSelection();
     }//GEN-LAST:event_btnIngresarActionPerformed

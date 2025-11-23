@@ -147,7 +147,7 @@ public class ReporteInteligente extends javax.swing.JFrame implements Observer{
         }
 
         @Override
-        protected String doInBackground() throws Exception {
+        protected String doInBackground() {
             String respuesta = "Esperando respuesta";
             int cant = 0;
 

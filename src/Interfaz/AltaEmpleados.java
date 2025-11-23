@@ -180,7 +180,7 @@ public class AltaEmpleados extends javax.swing.JFrame implements Observer{
             salario = Integer.parseInt(txtSal.getText());
         }catch(NumberFormatException e){
             todoOk = false;
-            JOptionPane.showMessageDialog(this, "Ingrese un numero en salario", "error", 0);
+            JOptionPane.showMessageDialog(this, "Ingrese un número en salario", "error", 0);
         }
         if(todoOk) {
            Empleado nuevo = new Empleado(ci, nom, cel, salario, man, ar);
@@ -193,7 +193,7 @@ public class AltaEmpleados extends javax.swing.JFrame implements Observer{
                 txtCel.setText("");
                 txtCi.setText("");
                 txtSal.setText("");
-                JOptionPane.showMessageDialog(this, "Ingresado con exito", "Confirmacion", 1);
+                JOptionPane.showMessageDialog(this, "Ingresado con éxito", "Confirmación", 1);
            }else{
                JOptionPane.showMessageDialog(this, "Presupuesto insuficiente", "error", 0);
            }

@@ -38,10 +38,10 @@ public class HacerReporteIA {
             cvEmpleado += arch.linea();
         }
         arch.cerrar();
-        String prompt = "Analizaras deciciones tomadas dentro de una empresa. Debes dar una opinion sobre el traslado de area de un empleado. Se te dara, la descripcion del area de origen, la descripcion del area destino y un resumen del curriculum del empleado. Formula una opinion sobre si es buena idea el cambio de area respecto a las aptitudes del empleado y donde se puede adaptar mejor, dando pros y contras"+
-                        "Datos areas: \n" +
-                        "Area de origen: " + origen.getNombre() + origen.getDescripcion() + "\n" +
-                        "Area de destino: " + destino.getNombre() + destino.getDescripcion() + "\n" +
+        String prompt = "Analizaras deciciones tomadas dentro de una empresa. Debes dar una opinión sobre el traslado de área de un empleado. Se te dará, la descripción del área de orígen, la descripción del área destino y un resumen del currículum del empleado. Formula una opinión sobre si es buena idea el cambio de área respecto a las aptitudes del empleado y donde se puede adaptar mejor, dando pros y contras"+
+                        "Datos áreas: \n" +
+                        "Área de origen: " + origen.getNombre() + origen.getDescripcion() + "\n" +
+                        "Área de destino: " + destino.getNombre() + destino.getDescripcion() + "\n" +
                         "Curriculum: " + cvEmpleado;
         return prompt;
     }

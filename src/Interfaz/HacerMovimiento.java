@@ -117,7 +117,7 @@ public class HacerMovimiento extends javax.swing.JFrame implements Observer{
                 modelo.agregarMovimiento(mov);
                 unEmpleado.setArea(destino);
                 origen.restarAlPresupuestoRestante((13-unMes)*unEmpleado.getSalario());
-                JOptionPane.showMessageDialog(this, " Movimiento echo con exito", "Confirmacion", 1);
+                JOptionPane.showMessageDialog(this, " Movimiento hecho con éxito", "Confirmación", 1);
                 listaOrigen.clearSelection();
                 listaEmpleados.clearSelection();
                 listaDestinos.clearSelection();
@@ -125,7 +125,7 @@ public class HacerMovimiento extends javax.swing.JFrame implements Observer{
                 JOptionPane.showMessageDialog(this, "No hay presupuesto suficiente en " + destino + " para realizar el cambio", "Error", 2);
             }
         }else{
-            JOptionPane.showMessageDialog(this, "Haga una seleccion en todos los campos", "Error", 2);
+            JOptionPane.showMessageDialog(this, "Haga una selección en todos los campos", "Error", 2);
         }
     }//GEN-LAST:event_btnAceptarActionPerformed
 

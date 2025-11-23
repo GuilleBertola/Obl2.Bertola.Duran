@@ -19,7 +19,7 @@ public class ReporteDeMov extends javax.swing.JFrame implements Observer{
         initComponents();
         mt = new DefaultTableModel(); //pondria esto en un metodo capaz, no se q es
         mt.setColumnIdentifiers(new Object[]{"Movimientos", "Mes", "Origen", "Destino", "Empleado"});
-        JTable1.setModel(mt);
+        tabla.setModel(mt);
         cargarListas(); //En algun momento ordena??
         modelo.addObserver(this);
     }
@@ -29,7 +29,7 @@ public class ReporteDeMov extends javax.swing.JFrame implements Observer{
     private void initComponents() {
 
         jScrollPane1 = new javax.swing.JScrollPane();
-        JTable1 = new javax.swing.JTable();
+        tabla = new javax.swing.JTable();
         btnTodos = new javax.swing.JButton();
         btnOrigen = new javax.swing.JButton();
         jScrollPane2 = new javax.swing.JScrollPane();
@@ -49,7 +49,7 @@ public class ReporteDeMov extends javax.swing.JFrame implements Observer{
         setTitle("Reporte de Movimientos");
         getContentPane().setLayout(null);
 
-        JTable1.setModel(new javax.swing.table.DefaultTableModel(
+        tabla.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
                 {null, null, null, null, null},
                 {null, null, null, null, null},
@@ -60,7 +60,7 @@ public class ReporteDeMov extends javax.swing.JFrame implements Observer{
                 "Movimiento", "Més", "Area de origen", "Area de destino", "Nombre del empleado"
             }
         ));
-        jScrollPane1.setViewportView(JTable1);
+        jScrollPane1.setViewportView(tabla);
 
         getContentPane().add(jScrollPane1);
         jScrollPane1.setBounds(0, 0, 400, 180);
@@ -241,6 +241,7 @@ public class ReporteDeMov extends javax.swing.JFrame implements Observer{
     
     public void cargarListaDestino(){
         Area [] a= new Area[modelo.getListaAreas().size()];
+        modelo.ordenarListaAreas();
         for (int i = 0; i < modelo.getListaAreas().size(); i++) {
             a[i] = modelo.getListaAreas().get(i);
         }
@@ -261,7 +262,7 @@ public class ReporteDeMov extends javax.swing.JFrame implements Observer{
         listaEmp.setListData(e);        
     }
     
-    public void exportarCSV(JTable tabla, File archivo) { //Alto uso de chat detectado, porque le pasas la tabla como parametro si es un atributo de esta clase??, que es un print writer y porque no usas la clase ArchivoGrabacion
+    public void exportarCSV(File archivo) { //Alto uso de chat detectado, porque le pasas la tabla como parametro si es un atributo de esta clase??, que es un print writer y porque no usas la clase ArchivoGrabacion
         try (PrintWriter pw = new PrintWriter(new FileWriter(archivo))) {
 
             for (int i = 0; i < tabla.getColumnCount(); i++) {
@@ -301,7 +302,7 @@ public class ReporteDeMov extends javax.swing.JFrame implements Observer{
 
         if (seleccion == JFileChooser.APPROVE_OPTION) {
             File archivo = chooser.getSelectedFile();
-            exportarCSV(JTable1,archivo);
+            exportarCSV(archivo);
         }
     }
     
@@ -309,7 +310,6 @@ public class ReporteDeMov extends javax.swing.JFrame implements Observer{
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JTable JTable1;
     private javax.swing.JButton btnDestino;
     private javax.swing.JButton btnEmp;
     private javax.swing.JButton btnExportar;
@@ -325,6 +325,7 @@ public class ReporteDeMov extends javax.swing.JFrame implements Observer{
     private javax.swing.JList listaEmp;
     private javax.swing.JList<String> listaMes;
     private javax.swing.JList listaOrigen;
+    private javax.swing.JTable tabla;
     // End of variables declaration//GEN-END:variables
     private Sistema modelo;
 }
