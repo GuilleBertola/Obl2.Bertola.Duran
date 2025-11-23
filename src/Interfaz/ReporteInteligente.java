@@ -45,7 +45,7 @@ public class ReporteInteligente extends javax.swing.JFrame implements Observer{
         jScrollPane1.setViewportView(listaEmpleados);
 
         getContentPane().add(jScrollPane1);
-        jScrollPane1.setBounds(160, 90, 47, 140);
+        jScrollPane1.setBounds(160, 90, 70, 140);
 
         listaDestinos.setModel(new javax.swing.AbstractListModel() {
             String[] strings = { "Item 1", "Item 2", "Item 3", "Item 4", "Item 5" };
@@ -55,7 +55,7 @@ public class ReporteInteligente extends javax.swing.JFrame implements Observer{
         jScrollPane2.setViewportView(listaDestinos);
 
         getContentPane().add(jScrollPane2);
-        jScrollPane2.setBounds(50, 280, 47, 146);
+        jScrollPane2.setBounds(40, 280, 70, 146);
 
         listaOrigen.setModel(new javax.swing.AbstractListModel() {
             String[] strings = { "Item 1", "Item 2", "Item 3", "Item 4", "Item 5" };
@@ -70,7 +70,7 @@ public class ReporteInteligente extends javax.swing.JFrame implements Observer{
         jScrollPane3.setViewportView(listaOrigen);
 
         getContentPane().add(jScrollPane3);
-        jScrollPane3.setBounds(40, 90, 47, 146);
+        jScrollPane3.setBounds(40, 90, 70, 146);
 
         btnAceptar.setText("Pedir Reporte");
         btnAceptar.addActionListener(new java.awt.event.ActionListener() {

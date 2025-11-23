@@ -3,11 +3,8 @@ package Interfaz;
 
 import Dominio.*;
 import java.util.*;
-import javax.swing.*;
 import javax.swing.table.DefaultTableModel;
 import java.io.File;
-import java.io.FileWriter;
-import java.io.PrintWriter;
 import javax.swing.JFileChooser;
 import Archivos.*;
 
@@ -18,10 +15,10 @@ public class ReporteDeMov extends javax.swing.JFrame implements Observer{
     public ReporteDeMov(Sistema sis) {
         modelo = sis;
         initComponents();
-        mt = new DefaultTableModel(); //pondria esto en un metodo capaz, no se q es
+        mt = new DefaultTableModel(); 
         mt.setColumnIdentifiers(new Object[]{"Movimientos", "Mes", "Origen", "Destino", "Empleado"});
         tabla.setModel(mt);
-        cargarListas(); //En algun momento ordena??
+        cargarListas(); 
         modelo.addObserver(this);
     }
 
